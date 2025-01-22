@@ -1,0 +1,373 @@
+﻿<!DOCTYPE html >
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" href="../css/bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/presentationStyle.css" />
+    <link rel="stylesheet" href="../css/vs.min.css" />
+    <script src="../scripts/jquery-3.5.1.min.js"></script>
+    <script src="../scripts/clipboard.min.js"></script>
+    <script src="../scripts/highlight.min.js"></script>
+    <script src="../scripts/presentationStyle.js"></script>
+    <title>JobUtil.SmartCardEncode Method</title>
+    <meta name="Title" content="SmartCardEncode" />
+    <meta name="Help.Id" content="M:Zebra.Sdk.Card.Job.JobUtil.SmartCardEncode(System.Int32)" />
+    <meta name="Help.ContentType" content="Reference" />
+    <meta name="container" content="Zebra.Sdk.Card.Job" />
+    <meta name="guid" content="f1858fea-8b4e-5519-f066-819b4f144e51" />
+    <meta name="Description" content="Positions a card at the smart card station, suspends the job to allow the card to be read or encoded, and waits for to be called before completing the job." />
+    <meta name="tocFile" content="../toc/IDABLB.xml" />
+  </head>
+  <body>
+    <div class="fixedLayout">
+      <div id="Header" class="fixedHeader">
+        <div class="pageHeader level mb-0 py-2 px-4">
+          <div id="TitleContainer" class="level-left">
+            <div id="DocumentationTitle" class="level-item">Zebra API (build v3.01.332)</div>
+          </div>
+          <div id="LangFilterSearchContainer" class="level-right">
+            <div class="level-item">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="CurrentLanguage"></span>
+                    <span class="icon is-small">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" role="menu">
+                  <div id="LanguageSelections" class="dropdown-content">
+                    <a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="level-item">
+              <form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <button id="SearchButton" type="submit" class="is-hidden"></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixedContent">
+        <nav class="breadcrumb my-1 px-2 border-bottom" role="navigation">
+          <ul id="TopicBreadcrumbs" />
+        </nav>
+        <div class="columns pl-5 pr-5 fixedContent">
+          <div id="ShowHideTOCColumn" class="column is-hidden-tablet">
+            <a id="ShowHideTOC">Show/Hide TOC</a>
+          </div>
+          <div id="TOCColumn" class="column is-hidden-mobile">
+            <nav class="toc">
+              <ul id="TableOfContents" class="toc-menu" />
+            </nav>
+          </div>
+          <div id="TopicContent" class="column content is-7">
+            <h1>Job<wbr />Util<span id="LST7B379BAA_0" data-languageSpecificText="cpp=::|nu=."></span>Smart<wbr />Card<wbr />Encode Method</h1>
+            <div class="summary">
+            Positions a card at the smart card station, suspends the job to allow the card to be read or encoded, and waits for <a href="334146c5-600a-91d8-285a-9f24779ff3fc.htm">Resume<span id="LST7B379BAA_1" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a> 
+            to be called before completing the job.
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Definition</h2>
+            <div id="IDBSection">
+              <strong>Namespace:</strong> <a href="7eb9840d-b278-1055-f4e5-ffcff0b504c3.htm">Zebra.Sdk.Card.Job</a><br /><strong>Assembly:</strong> SdkApi.Card.Core (in SdkApi.Card.Core.dll) Version: 3.01.332<div class="codeSnippet" data-codeSnippetLanguage="cs"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="identifier">int</span> <span class="identifier">SmartCardEncode</span>(
+	<span class="identifier">int</span> <span class="parameter">copies</span>
+)</code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="vb"><div class="codeHeader"><span class="codeHeaderTitle">VB</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-vb"><span class="keyword">Function</span> <span class="identifier">SmartCardEncode</span> ( 
+	<span class="parameter">copies</span> <span class="keyword">As</span> <span class="identifier">Integer</span>
+) <span class="keyword">As</span> <span class="identifier">Integer</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="cpp"><div class="codeHeader"><span class="codeHeaderTitle">C++</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cpp"><span class="identifier">int</span> <span class="identifier">SmartCardEncode</span>(
+	<span class="identifier">int</span> <span class="parameter">copies</span>
+)</code></pre></div></div><h4 class="quickLinkHeader">Parameters</h4><dl><dt class="has-text-weight-normal"><span class="parameter">copies</span>  <span class="noLink">Int32</span></dt><dd>Number of cards to be encoded.</dd></dl><h4 class="quickLinkHeader">Return Value</h4><span class="noLink">Int32</span><br />The assigned job ID number.</div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Remarks</h2>
+            <div id="IDBCSection">
+              <ul>
+                <li>Smart card job settings must be configured prior to calling this method in order to specify the card type.</li>
+              </ul>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Example</h2>
+            <div id="IDHCSection">Demonstrates how to position a smart card for encoding.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using System;
+using System.Collections.Generic;
+using System.Threading;
+using Zebra.Sdk.Card.Containers;
+using Zebra.Sdk.Card.Job;
+using Zebra.Sdk.Card.Printer;
+using Zebra.Sdk.Comm;
+
+public class PositionSmartCardExample {
+
+    private const int CARD_FEED_TIMEOUT = 30000;
+
+    public static void Main(string[] args) {
+        Connection connection = null;
+        ZebraPrinterZmotif zmotifCardPrinter = null;
+
+        try {
+            connection = new UsbConnection("\\\\?\\usb#vid_0a5f&amp;pid_00a7#411738706#...");
+            connection.Open();
+
+            zmotifCardPrinter = ZebraCardPrinterFactory.GetZmotifPrinter(connection);
+
+            if (zmotifCardPrinter.HasSmartCardEncoder()) {
+                ConfigureSmartCardJobSettings(zmotifCardPrinter);
+
+                // Send job and poll for status
+                int jobId = zmotifCardPrinter.SmartCardEncode(1);
+                JobStatusInfo jobStatus = PollJobStatus(jobId, zmotifCardPrinter);
+                Console.WriteLine($"Job {jobId} completed with status '{jobStatus.PrintStatus}'.");
+            } else {
+                Console.WriteLine("No smart card encoder installed.");
+            }
+        } catch (Exception e) {
+            Console.WriteLine($"Error positioning card: {e.Message}");
+        } finally {
+            CloseQuietly(connection, zmotifCardPrinter);
+        }
+    }
+
+    #region SmartCard
+    /// &lt;exception cref="ArgumentException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="ConnectionException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="System.IO.IOException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Settings.SettingsException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Card.Exceptions.ZebraCardException"&gt;&lt;/exception&gt;
+    private static void ConfigureSmartCardJobSettings(ZebraCardPrinter zebraCardPrinter) {
+        Console.Write("Available smart card encoding types: ");
+        Dictionary&lt;string, string&gt; smartCardEncoders = zebraCardPrinter.GetSmartCardConfigurations();
+        Console.WriteLine(string.Join(", ", smartCardEncoders.Keys));
+
+        // Configure smart card encoding type
+        string encoderType = "";
+        if (smartCardEncoders.ContainsKey("mifare")) {
+            encoderType = "mifare";
+        } else if (smartCardEncoders.ContainsKey("hf")) {
+            encoderType = "hf";
+        } else if (smartCardEncoders.ContainsKey("other")) {
+            encoderType = "other";
+        } else if (smartCardEncoders.ContainsKey("contact") || smartCardEncoders.ContainsKey("contact_station")) {
+            encoderType = smartCardEncoders.ContainsKey("contact") ? "contact" : "contact_station";
+        }
+
+        if (!string.IsNullOrEmpty(encoderType)) {
+            Console.WriteLine($"Setting encoder type to: {encoderType}");
+            if (encoderType.Contains("contact")) {
+                zebraCardPrinter.SetJobSetting(ZebraCardJobSettingNames.SMART_CARD_CONTACT, "yes");
+            } else {
+                zebraCardPrinter.SetJobSetting(ZebraCardJobSettingNames.SMART_CARD_CONTACTLESS, encoderType);
+            }
+        }
+    }
+    #endregion SmartCard
+
+    #region JobStatus
+    /// &lt;exception cref="ArgumentException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="ConnectionException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="System.IO.IOException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="OverflowException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Settings.SettingsException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Card.Exceptions.ZebraCardException"&gt;&lt;/exception&gt;
+    private static JobStatusInfo PollJobStatus(int jobId, ZebraCardPrinter zebraCardPrinter) {
+        JobStatusInfo jobStatusInfo = new JobStatusInfo();
+        bool isFeeding = false;
+
+        long start = Math.Abs(Environment.TickCount);
+        while (true) {
+            jobStatusInfo = zebraCardPrinter.GetJobStatus(jobId);
+
+            if (!isFeeding) {
+                start = Math.Abs(Environment.TickCount);
+            }
+
+            isFeeding = jobStatusInfo.CardPosition.Contains("feeding");
+
+            string alarmDesc = jobStatusInfo.AlarmInfo.Value &gt; 0 ? $" ({jobStatusInfo.AlarmInfo.Description})" : "";
+            string errorDesc = jobStatusInfo.ErrorInfo.Value &gt; 0 ? $" ({jobStatusInfo.ErrorInfo.Description})" : "";
+
+            Console.WriteLine($"Job {jobId}: status:{jobStatusInfo.PrintStatus}, position:{jobStatusInfo.CardPosition}, contact:{jobStatusInfo.ContactSmartCardStatus}, " +
+                $"contactless:{jobStatusInfo.ContactlessSmartCardStatus}, alarm:{jobStatusInfo.AlarmInfo.Value}{alarmDesc}, error:{jobStatusInfo.ErrorInfo.Value}{errorDesc}");
+
+            if (jobStatusInfo.PrintStatus.Contains("done_ok")) {
+                break;
+            } else if (jobStatusInfo.ContactSmartCardStatus.Contains("at_station") || jobStatusInfo.ContactlessSmartCardStatus.Contains("at_station")) {
+                // Perform smart card encoding operations, resume job when complete
+                WaitForUserInput(zebraCardPrinter);
+            } else if (jobStatusInfo.PrintStatus.Contains("error") || jobStatusInfo.PrintStatus.Contains("cancelled")) {
+                Console.WriteLine($"The job encountered an error [{jobStatusInfo.ErrorInfo.Description}] and was cancelled.");
+                break;
+            } else if (jobStatusInfo.ErrorInfo.Value &gt; 0) {
+                Console.WriteLine($"The job encountered an error [{jobStatusInfo.ErrorInfo.Description}] and was cancelled.");
+                zebraCardPrinter.Cancel(jobId);
+            } else if (jobStatusInfo.PrintStatus.Contains("in_progress") &amp;&amp; isFeeding) {
+                if (Math.Abs(Environment.TickCount) &gt; start + CARD_FEED_TIMEOUT) {
+                    Console.WriteLine("The job timed out waiting for a card and was cancelled.");
+                    zebraCardPrinter.Cancel(jobId);
+                }
+            }
+
+            Thread.Sleep(1000);
+        }
+        return jobStatusInfo;
+    }
+
+    private static void WaitForUserInput(ZebraCardPrinter printer) {
+        while (true) {
+            try {
+                Console.Write("Card staged for encoding. Press 'r' to resume or 'c' to cancel: ");
+                char key = Console.ReadKey().KeyChar;
+                if (key.Equals('r') || key.Equals('R')) {
+                    Console.WriteLine("\nResuming smartcard job");
+                    printer.Resume();
+                    break;
+                } else if (key.Equals('c') || key.Equals('C')) {
+                    Console.WriteLine("\nCancelling smart card job");
+                    if (printer is ZebraPrinterZmotif) {
+                        ((ZebraPrinterZmotif)printer).Abort(true);
+                    } else {
+                        printer.Cancel(0);
+                    }
+                    break;
+                }
+            } catch { }
+        }
+    }
+    #endregion JobStatus
+
+    #region CleanUp
+    private static void CloseQuietly(Connection connection, ZebraCardPrinter zebraCardPrinter) {
+        try {
+            if (zebraCardPrinter != null) {
+                zebraCardPrinter.Destroy();
+            }
+        } catch { }
+
+        try {
+            if (connection != null) {
+                connection.Close();
+            }
+        } catch { }
+    }
+    #endregion CleanUp
+}</code></pre></div></div></div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Exceptions</h2>
+            <div id="IDECSection">
+              <table class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="3c2cfe78-466e-3c50-8ad5-48304fef5956.htm">ConnectionException</a>
+                  </td>
+                  <td>If the device is busy or there is an error communicating with the printer.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="1fca04cb-e649-aa04-dae1-d11624592275.htm">SettingsException</a>
+                  </td>
+                  <td>If the job settings are not valid.</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="ecdb3e25-4c7e-545f-04c1-9217a4ac0355.htm">ZebraCardException</a>
+                  </td>
+                  <td>If a printer error occurs or <span class="code">copies</span> is invalid.</td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>See Also</h2>
+            <div id="seeAlsoSection">
+              <h4>Reference</h4>
+              <div>
+                <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil Interface</a>
+              </div>
+              <div>
+                <a href="7eb9840d-b278-1055-f4e5-ffcff0b504c3.htm">Zebra.Sdk.Card.Job Namespace</a>
+              </div>
+            </div>
+          </div>
+          <div id="InThisArticleColumn" class="column is-hidden-mobile">
+            <nav class="menu sticky is-hidden">
+              <p class="menu-label">
+                <strong>In This Article</strong>
+              </p>
+              <ul id="InThisArticleMenu" class="menu-list">
+                <li>
+                  <a class="quickLink">Definition</a>
+                  <ul class="menu">
+                    <li>
+                      <a class="quickLink">Parameters</a>
+                    </li>
+                    <li>
+                      <a class="quickLink">Return Value</a>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="quickLink">Remarks</a>
+                </li>
+                <li>
+                  <a class="quickLink">Example</a>
+                </li>
+                <li>
+                  <a class="quickLink">Exceptions</a>
+                </li>
+                <li>
+                  <a class="quickLink">See Also</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <footer id="PageFooter" class="footer border-top py-3 fixedFooter">
+        <div class="columns">
+          <div class="column">
+            <p>© 2024 Zebra Technologies Corporation and/or its affiliates. All rights reserved.</p> 
+				</div>
+          <div class="column"> 
+				</div>
+        </div>
+      </footer>
+    </div>
+    <script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script>
+  </body>
+</html>

@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html >
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" href="../css/bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/presentationStyle.css" />
+    <link rel="stylesheet" href="../css/vs.min.css" />
+    <script src="../scripts/jquery-3.5.1.min.js"></script>
+    <script src="../scripts/clipboard.min.js"></script>
+    <script src="../scripts/highlight.min.js"></script>
+    <script src="../scripts/presentationStyle.js"></script>
+    <title>AlertDestination Class</title>
+    <meta name="Title" content="AlertDestination" />
+    <meta name="Help.Id" content="T:Zebra.Sdk.Settings.AlertDestination" />
+    <meta name="Help.ContentType" content="Reference" />
+    <meta name="container" content="Zebra.Sdk.Settings" />
+    <meta name="guid" content="e0098ee7-acc7-4935-34c7-4c6b60544018" />
+    <meta name="Description" content="Enumeration of the various alert destinations which can be set on Zebra Printers." />
+    <meta name="tocFile" content="../toc/IDZB.xml" />
+  </head>
+  <body>
+    <div class="fixedLayout">
+      <div id="Header" class="fixedHeader">
+        <div class="pageHeader level mb-0 py-2 px-4">
+          <div id="TitleContainer" class="level-left">
+            <div id="DocumentationTitle" class="level-item">Zebra API (build v3.01.332)</div>
+          </div>
+          <div id="LangFilterSearchContainer" class="level-right">
+            <div class="level-item">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="CurrentLanguage"></span>
+                    <span class="icon is-small">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" role="menu">
+                  <div id="LanguageSelections" class="dropdown-content">
+                    <a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="level-item">
+              <form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <button id="SearchButton" type="submit" class="is-hidden"></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixedContent">
+        <nav class="breadcrumb my-1 px-2 border-bottom" role="navigation">
+          <ul id="TopicBreadcrumbs" />
+        </nav>
+        <div class="columns pl-5 pr-5 fixedContent">
+          <div id="ShowHideTOCColumn" class="column is-hidden-tablet">
+            <a id="ShowHideTOC">Show/Hide TOC</a>
+          </div>
+          <div id="TOCColumn" class="column is-hidden-mobile">
+            <nav class="toc">
+              <ul id="TableOfContents" class="toc-menu" />
+            </nav>
+          </div>
+          <div id="TopicContent" class="column content is-7">
+            <h1>Alert<wbr />Destination Class</h1>
+            <div class="summary">
+            Enumeration of the various alert destinations which can be set on Zebra Printers.
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Definition</h2>
+            <div id="IDBSection">
+              <strong>Namespace:</strong> <a href="49fd0800-6b6b-8535-ee9a-b6a6cea0f996.htm">Zebra.Sdk.Settings</a><br /><strong>Assembly:</strong> SdkApi.Core (in SdkApi.Core.dll) Version: 3.01.332<div class="codeSnippet" data-codeSnippetLanguage="cs"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">[<span class="identifier">JsonObjectAttribute</span>]
+<span class="keyword">public</span> <span class="keyword">class</span> <span class="identifier">AlertDestination</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="vb"><div class="codeHeader"><span class="codeHeaderTitle">VB</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-vb">&lt;<span class="identifier">JsonObjectAttribute</span>&gt;
+<span class="keyword">Public</span> <span class="keyword">Class</span> <span class="identifier">AlertDestination</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="cpp"><div class="codeHeader"><span class="codeHeaderTitle">C++</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cpp">[<span class="identifier">JsonObjectAttribute</span>]
+<span class="keyword">public</span> <span class="keyword">ref class</span> <span class="identifier">AlertDestination</span></code></pre></div></div><dl class="inheritanceHierarchy"><dt>Inheritance</dt><dd><span class="noLink">Object</span>  <span class="icon is-small"><i class="fa fa-arrow-right"></i></span>  <span class="selflink">AlertDestination</span></dd></dl></div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Properties</h2>
+            <div id="IDQEASection">
+              <table id="PropertyList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="a1236120-9cf2-ae68-23c4-93054b93b4ef.htm">DestinationAsSGDString</a>
+                  </td>
+                  <td>
+            Returns the alert destination as a string.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="8a0d9cf2-e639-f008-b688-a86ac1d31c5e.htm">DestinationName</a>
+                  </td>
+                  <td>
+            Gets/Sets the alert destination name.
+            </td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Methods</h2>
+            <div id="IDKEASection">
+              <table id="MethodList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="e255365f-1ef4-557e-4ac0-a193d3d549d3.htm">CreateAlertDestination</a>
+                  </td>
+                  <td>
+            Creates an AlertDestination based on the <span class="code">destination</span>.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="f8642b7f-bbf2-3316-c659-f1abcbc4f70f.htm">CreateAlertDestinationFromName</a>
+                  </td>
+                  <td>
+            Creates an AlertDestination based on the <span class="code">destinationName</span>.
+            <a href="8a0d9cf2-e639-f008-b688-a86ac1d31c5e.htm">DestinationName</a></td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="fa895bcb-a265-f115-8f51-f82a1becdb89.htm">Equals</a>
+                  </td>
+                  <td>
+                    <br />(Overrides <span class="noLink">Object<span id="LSTF0500818_0" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>Equals(Object)</span>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="02739c67-5f85-091c-950a-24e78a838958.htm">GetHashCode</a>
+                  </td>
+                  <td>
+                    <br />(Overrides <span class="noLink">Object<span id="LSTF0500818_1" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>GetHashCode<span id="LSTF0500818_2" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></span>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="noLink">GetType</span>
+                  </td>
+                  <td>
+                    <br />(Inherited from <span class="noLink">Object</span>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="eb89b39d-b241-c55f-b5ef-278536dfa5e4.htm">ToString</a>
+                  </td>
+                  <td>
+            Returns the alert destination.
+            <br />(Overrides <span class="noLink">Object<span id="LSTF0500818_3" data-languageSpecificText="cs=.|vb=.|cpp=::|nu=.|fs=."></span>ToString<span id="LSTF0500818_4" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></span>)</td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Fields</h2>
+            <div id="IDAEASection">
+              <table id="FieldList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="898311dc-bbdf-6fdc-9200-ed7379385ccc.htm">BLUETOOTH</a>
+                  </td>
+                  <td>
+            Alert Destination 'Bluetooth'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="fab3f20d-6edf-7d2c-af8e-c207e577ffa9.htm">EMAIL</a>
+                  </td>
+                  <td>
+            Alert Destination 'E-Mail'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="87ff7fff-8619-6fc5-8114-cecd6e5b9b30.htm">HTTP</a>
+                  </td>
+                  <td>
+            Alert Destination 'HTTP-POST'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e76d30d5-d99b-37c3-2997-c29168de987c.htm">PARALLEL</a>
+                  </td>
+                  <td>
+            Alert Destination 'Parallel'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="763fc0a8-098a-575c-16ac-a2fe6178509e.htm">SDK</a>
+                  </td>
+                  <td>
+            Alert Destination 'SDK'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="cc0464bc-76f8-41cc-2550-f9ef0762489d.htm">SERIAL</a>
+                  </td>
+                  <td>
+            Alert Destination 'Serial'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="dfac4390-fe19-10d5-0374-a5116f4c9166.htm">SNMP</a>
+                  </td>
+                  <td>
+            Alert Destination 'SNMP'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="fc7bf90c-0385-22d4-709f-dc8e7e61f0f6.htm">TCP</a>
+                  </td>
+                  <td>
+            Alert Destination 'TCP'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d5ff309d-173b-eee5-1e54-f175e6db7fab.htm">UDP</a>
+                  </td>
+                  <td>
+            Alert Destination 'UDP'
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="cca66223-b10a-bb6c-7b29-b6dd1f05afea.htm">USB</a>
+                  </td>
+                  <td>
+            Alert Destination 'USB'
+            </td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>See Also</h2>
+            <div id="seeAlsoSection">
+              <h4>Reference</h4>
+              <div>
+                <a href="49fd0800-6b6b-8535-ee9a-b6a6cea0f996.htm">Zebra.Sdk.Settings Namespace</a>
+              </div>
+            </div>
+          </div>
+          <div id="InThisArticleColumn" class="column is-hidden-mobile">
+            <nav class="menu sticky is-hidden">
+              <p class="menu-label">
+                <strong>In This Article</strong>
+              </p>
+              <ul id="InThisArticleMenu" class="menu-list">
+                <li>
+                  <a class="quickLink">Definition</a>
+                </li>
+                <li>
+                  <a class="quickLink">Properties</a>
+                </li>
+                <li>
+                  <a class="quickLink">Methods</a>
+                </li>
+                <li>
+                  <a class="quickLink">Fields</a>
+                </li>
+                <li>
+                  <a class="quickLink">See Also</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <footer id="PageFooter" class="footer border-top py-3 fixedFooter">
+        <div class="columns">
+          <div class="column">
+            <p>© 2024 Zebra Technologies Corporation and/or its affiliates. All rights reserved.</p> 
+				</div>
+          <div class="column"> 
+				</div>
+        </div>
+      </footer>
+    </div>
+    <script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script>
+  </body>
+</html>

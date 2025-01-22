@@ -1,0 +1,666 @@
+﻿<!DOCTYPE html >
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" href="../css/bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/presentationStyle.css" />
+    <link rel="stylesheet" href="../css/vs.min.css" />
+    <script src="../scripts/jquery-3.5.1.min.js"></script>
+    <script src="../scripts/clipboard.min.js"></script>
+    <script src="../scripts/highlight.min.js"></script>
+    <script src="../scripts/presentationStyle.js"></script>
+    <title>ZebraCardPrinter Interface</title>
+    <meta name="Title" content="ZebraCardPrinter" />
+    <meta name="Help.Id" content="T:Zebra.Sdk.Card.Printer.ZebraCardPrinter" />
+    <meta name="Help.ContentType" content="Reference" />
+    <meta name="container" content="Zebra.Sdk.Card.Printer" />
+    <meta name="guid" content="b98433e3-3a97-cfd2-e81d-325dfc78c2b1" />
+    <meta name="Description" content="An interface used to obtain various properties of a Zebra card printer." />
+    <meta name="tocFile" content="../toc/IDNB.xml" />
+  </head>
+  <body>
+    <div class="fixedLayout">
+      <div id="Header" class="fixedHeader">
+        <div class="pageHeader level mb-0 py-2 px-4">
+          <div id="TitleContainer" class="level-left">
+            <div id="DocumentationTitle" class="level-item">Zebra API (build v3.01.332)</div>
+          </div>
+          <div id="LangFilterSearchContainer" class="level-right">
+            <div class="level-item">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="CurrentLanguage"></span>
+                    <span class="icon is-small">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" role="menu">
+                  <div id="LanguageSelections" class="dropdown-content">
+                    <a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="level-item">
+              <form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <button id="SearchButton" type="submit" class="is-hidden"></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixedContent">
+        <nav class="breadcrumb my-1 px-2 border-bottom" role="navigation">
+          <ul id="TopicBreadcrumbs" />
+        </nav>
+        <div class="columns pl-5 pr-5 fixedContent">
+          <div id="ShowHideTOCColumn" class="column is-hidden-tablet">
+            <a id="ShowHideTOC">Show/Hide TOC</a>
+          </div>
+          <div id="TOCColumn" class="column is-hidden-mobile">
+            <nav class="toc">
+              <ul id="TableOfContents" class="toc-menu" />
+            </nav>
+          </div>
+          <div id="TopicContent" class="column content is-7">
+            <h1>Zebra<wbr />Card<wbr />Printer Interface</h1>
+            <div class="summary">
+            An interface used to obtain various properties of a Zebra card printer.
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Definition</h2>
+            <div id="IDBSection">
+              <strong>Namespace:</strong> <a href="3789905a-08e7-1620-921f-bf0a0def8950.htm">Zebra.Sdk.Card.Printer</a><br /><strong>Assembly:</strong> SdkApi.Card.Core (in SdkApi.Card.Core.dll) Version: 3.01.332<div class="codeSnippet" data-codeSnippetLanguage="cs"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="identifier">ZebraCardPrinter</span> : <span class="identifier">DeviceUtil</span>, 
+	<span class="identifier">SettingsProvider</span>, <span class="identifier">JobUtil</span>, <span class="identifier">JobControlProvider</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="vb"><div class="codeHeader"><span class="codeHeaderTitle">VB</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-vb"><span class="keyword">Public</span> <span class="keyword">Interface</span> <span class="identifier">ZebraCardPrinter</span>
+	<span class="keyword">Inherits</span> <span class="identifier">DeviceUtil</span>, <span class="identifier">SettingsProvider</span>, <span class="identifier">JobUtil</span>, <span class="identifier">JobControlProvider</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="cpp"><div class="codeHeader"><span class="codeHeaderTitle">C++</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cpp"><span class="keyword">public</span> <span class="keyword">interface class</span> <span class="identifier">ZebraCardPrinter</span> : <span class="identifier">DeviceUtil</span>, 
+	<span class="identifier">SettingsProvider</span>, <span class="identifier">JobUtil</span>, <span class="identifier">JobControlProvider</span></code></pre></div></div><dl class="implementsList"><dt>Implements</dt><dd><a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>, <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>, <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>, <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a></dd></dl></div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Properties</h2>
+            <div id="ID02B0FASection">
+              <table id="PropertyList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="e9946c14-c32a-6d2f-652e-21f623147ef6.htm">Connection</a>
+                  </td>
+                  <td>
+            Gets/sets the printer's connection.
+            </td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Methods</h2>
+            <div id="IDAFASection">
+              <table id="MethodList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="545794c8-27a7-ab94-c87d-043b56700e5b.htm">Cancel</a>
+                  </td>
+                  <td>
+            Cancels all jobs or a specific job.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="29dd5e3d-bc73-f572-0775-8bee7e113fb7.htm">CheckForAlarm</a>
+                  </td>
+                  <td>
+            Gets the printer's current alarm code.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="82cbddc4-0de7-c911-0d74-6af458cae80d.htm">ClearOcpDisplay</a>
+                  </td>
+                  <td>
+            Clears any custom line data from the OCP and returns it to the main view.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="37b7ddc5-31ce-5f89-544b-0e56ebc55358.htm">Destroy</a>
+                  </td>
+                  <td>
+            Clean up all the resources and stop any running threads.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="4899273c-d3e3-4fc0-ae35-af7ec0270560.htm">EjectCard</a>
+                  </td>
+                  <td>
+            Sends the card to the eject bin.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="4b6dce4d-c08f-adb1-7b37-4b7a42fa4c2c.htm">GetAllJobSettings</a>
+                  </td>
+                  <td>
+            Retrieve all settings and their attributes.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="abc3fce2-144f-fa84-3335-ca1e4157a98c.htm">GetAllJobSettingValues</a>
+                  </td>
+                  <td>
+            Retrieves all of the device's setting values.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e62532e6-92cd-2c1e-c6c4-aded2f1bd90f.htm">GetAllSettings</a>
+                  </td>
+                  <td>
+            Retrieve all settings and their attributes.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="faecdc61-6e36-94f6-d31f-9195aa0ce9fb.htm">GetAllSettingValues</a>
+                  </td>
+                  <td>
+            Retrieves all of the device's setting values.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="259f1e92-e142-33cc-083f-23c0be774d9b.htm">GetAvailableSettings</a>
+                  </td>
+                  <td>
+            Retrieve all of the setting identifiers for a device.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="f33fdd58-4f60-5f1d-673d-b734acaf3f25.htm">GetCardCount</a>
+                  </td>
+                  <td>
+            Returns the printer's total card count values.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e832b001-a002-6ab6-f427-8277d7fc222e.htm">GetJobList</a>
+                  </td>
+                  <td>
+            Returns a list of all the current jobs in the printer's queue.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="41d6ce3b-2e87-5b7f-e074-2a52b772fd4a.htm">GetJobSettingRange</a>
+                  </td>
+                  <td>
+            Retrieves the allowable range for a setting.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="a3e39e6f-fb74-fa76-5b43-eae86a8c0568.htm">GetJobSettings</a>
+                  </td>
+                  <td>
+            Retrieve all of the setting identifiers for a device.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d215a27d-7764-145b-6393-ed9ebb76bec0.htm">GetJobSettingsValues</a>
+                  </td>
+                  <td>
+            Retrieves the device's setting values for a list of setting IDs.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="153a7870-0c14-a141-e2e9-e6f9394727c6.htm">GetJobSettingType</a>
+                  </td>
+                  <td>
+            Returns the data type of the setting.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="0985e709-4794-f56b-dfa6-45d3c71d4737.htm">GetJobSettingValue</a>
+                  </td>
+                  <td>
+            Retrieves the device's setting value for a setting ID.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="0e174330-ab6a-6941-abb7-a8a30b301be4.htm">GetJobStatus</a>
+                  </td>
+                  <td>
+            Returns the job status for the specified <span class="code">jobId</span>.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="cbb79803-d3cd-9dc8-9bfe-27c314f2768d.htm">GetMagneticEncoderConfiguration</a>
+                  </td>
+                  <td>
+            Returns the printer's magnetic encoder configuration.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="8f7c7d59-00d7-07d3-d9ec-e26916ff80c8.htm">GetMediaInformation</a>
+                  </td>
+                  <td>
+            Returns a List of the printer's installed media information.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="6c5c2703-d932-0e50-5fe6-ebb28b8bc5e8.htm">GetOcpDisplay</a>
+                  </td>
+                  <td>
+            Returns the line data currently displayed on the printer's OCP.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="5bc1edb3-e336-bb5f-9472-140feed89977.htm">GetPrintCapability</a>
+                  </td>
+                  <td>
+            Returns the transfer type of the printer.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d1c98e10-fed0-d156-7e46-6e2cfcbf7ec2.htm">GetPrinterInformation</a>
+                  </td>
+                  <td>
+            Returns the printer's specific device information.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="bc140e7a-e801-aaf4-6c40-ff4be53e57d8.htm">GetPrinterStatus</a>
+                  </td>
+                  <td>
+            Returns the printer's current status information.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="36b9d82f-f536-d343-d378-d34d366e356c.htm">GetSensorStates</a>
+                  </td>
+                  <td>
+            Returns the printer's sensor states.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="5feb0887-4d66-f2df-b994-21ccb527b2bd.htm">GetSensorValues</a>
+                  </td>
+                  <td>
+            Returns the printer's sensor values.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d1dd2340-afab-f42e-1dab-caf1b4b83e7c.htm">GetSettingRange</a>
+                  </td>
+                  <td>
+            Retrieves the allowable range for a setting.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="8125250d-3305-9121-ab2a-d6c0f007080b.htm">GetSettingsValues</a>
+                  </td>
+                  <td>
+            Retrieves the device's setting values for a list of setting IDs.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="59514411-5f66-4059-c881-e40c48bda652.htm">GetSettingType</a>
+                  </td>
+                  <td>
+            Returns the data type of the setting.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="1f9bf134-25b9-07c9-cce8-1d5936ef48bc.htm">GetSettingValue</a>
+                  </td>
+                  <td>
+            Retrieves the device's setting value for a setting id.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="ebea096c-d002-7448-80e0-9a1ed9eb5f00.htm">GetSmartCardConfigurations</a>
+                  </td>
+                  <td>
+            Returns the printer's smart card encoder configurations.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e6aa11aa-182f-6ca3-15be-5c67db3351c9.htm">HasLaminator</a>
+                  </td>
+                  <td>
+            Returns true if the printer includes a laminator.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="c60077dd-d285-6d8b-96fa-f935d9bf285e.htm">HasMagneticEncoder</a>
+                  </td>
+                  <td>
+            Returns true if the printer includes a magnetic encoder.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="4c4d5419-aa80-173e-a253-7eefed6c6e99.htm">HasSmartCardEncoder</a>
+                  </td>
+                  <td>
+            Returns true if the printer includes a smart card encoder.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="1a51430f-945c-9414-edad-afaa262d0af4.htm">IsJobSettingReadOnly</a>
+                  </td>
+                  <td>
+            Returns true if the setting is read only.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d92a191d-8525-9f69-9c73-b88d6006450e.htm">IsJobSettingValid</a>
+                  </td>
+                  <td>
+            Returns true if value is valid for the given setting.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="089ba69c-9915-d00a-7f7d-fdae709c2641.htm">IsJobSettingWriteOnly</a>
+                  </td>
+                  <td>
+            Returns true if the setting is write only.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="eae8b79f-ac56-1da9-b3fb-4ecaf8b1a820.htm">IsSettingReadOnly</a>
+                  </td>
+                  <td>
+            Returns true if the setting is read only.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="957ef89c-4c06-52bf-3bb5-0ab7554f669e.htm">IsSettingValid</a>
+                  </td>
+                  <td>
+            Returns true if value is valid for the given setting.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="293359ca-dde5-a6e5-769f-dcac17b42749.htm">IsSettingWriteOnly</a>
+                  </td>
+                  <td>
+            Returns true if the setting is write only.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="91792290-d43a-3124-5a0d-591cd1a9fe4e.htm">MagEncode</a>
+                  </td>
+                  <td>
+            Encodes a magnetic card for the current job.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="4719813f-1b1c-3444-d264-6a2840fc3a3d.htm">PositionCard</a>
+                  </td>
+                  <td>
+            Moves a card from the specified source to the specified destination.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="a9f7e6fd-8824-37a5-6904-c95a9f9588fc.htm">Print</a>
+                  </td>
+                  <td>
+            Prints a card.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d2caa9f5-1176-90a4-d32a-554e5d75afc0.htm">PrintAndMagEncode</a>
+                  </td>
+                  <td>
+            Writes the magnetic encoding data and prints a card.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="967b6fff-1a30-23a5-0197-76b7378870b1.htm">PrintTemplate</a>
+                  </td>
+                  <td>
+            Prints a card from the provided <span class="code">templatejobData</span>.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="5fea1476-9c6c-7a96-9920-3c5000f4bfac.htm">ProcessSettingsViaMap</a>
+                  </td>
+                  <td>
+            Change or retrieve printer settings. 
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="7765f8b7-b903-a3aa-b5b8-f3992aa330b1.htm">ReadMagData(DataSource)</a>
+                  </td>
+                  <td>
+            Reads the data from a magnetically encoded card.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="6ce97eb3-7244-02bb-b850-d1fffe235da7.htm">ReadMagData(DataSource, Boolean)</a>
+                  </td>
+                  <td>
+            Reads the data from a magnetically encoded card.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e79241c3-c85c-a9a6-6be4-cf7e19401eb1.htm">RegisterAlarmHandler</a>
+                  </td>
+                  <td>
+            Registers a callback routine for asynchronous reporting of printer alarm conditions.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="3191b2bf-a9f6-86a3-d6b7-aa4563a0467c.htm">Reprint</a>
+                  </td>
+                  <td>
+            Reprints the last rendered job.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="fc4720c7-5b35-1f27-58fa-c536c6cce381.htm">Reset</a>
+                  </td>
+                  <td>
+            Resets the printer.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="334146c5-600a-91d8-285a-9f24779ff3fc.htm">Resume</a>
+                  </td>
+                  <td>
+            Resumes the processing of a held job such as a smart card encoding job.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="4fbb9bfd-ad64-f923-3a22-a39477eed653.htm">SetConnection</a>
+                  </td>
+                  <td>
+            Sets the printer connection.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="a43d1808-acd6-4cb7-7026-dbe95cddc67b.htm">SetJobSetting</a>
+                  </td>
+                  <td>
+            Sets the setting to the given value.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="2c9999de-254b-199c-970c-6750413a6440.htm">SetJobSettings</a>
+                  </td>
+                  <td>
+            Set more than one setting.
+            <br />(Inherited from <a href="a44e7bed-e114-863a-d1b7-6017a8a57b47.htm">JobControlProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="c4c4ac2f-072a-5004-d2be-9eab7dcc7041.htm">SetOcpDisplay</a>
+                  </td>
+                  <td>
+            Displays the specified line data on the printer's OCP.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="1760cd5e-52a1-1f4b-f522-74bc22d1e5ea.htm">SetSetting</a>
+                  </td>
+                  <td>
+            Sets the setting to the given value.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="887e0f87-acfa-6813-d9f0-1fb9dde084a5.htm">SetSettings</a>
+                  </td>
+                  <td>
+            Set more than one setting.
+            <br />(Inherited from <a href="03d1eb1f-9a74-af9f-8e23-7c5cd484e7a5.htm">SettingsProvider</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="f1858fea-8b4e-5519-f066-819b4f144e51.htm">SmartCardEncode</a>
+                  </td>
+                  <td>
+            Positions a card at the smart card station, suspends the job to allow the card to be read or encoded, and waits for <a href="334146c5-600a-91d8-285a-9f24779ff3fc.htm">Resume<span id="LST8493ABBE_0" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a> 
+            to be called before completing the job.
+            <br />(Inherited from <a href="0d80ded4-7fb7-535f-aa84-ad3b90d3e41f.htm">JobUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="f1d93e47-c4de-6803-6e72-d6bfa3c6e7e4.htm">UpdateFirmware(String)</a>
+                  </td>
+                  <td>
+            Updates the printers firmware.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="8056ecde-5aba-22f7-3b33-c16377918360.htm">UpdateFirmware(String, CardFirmwareUpdateHandler)</a>
+                  </td>
+                  <td>
+            Updates the printers firmware.
+            <br />(Inherited from <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil</a>)</td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>See Also</h2>
+            <div id="seeAlsoSection">
+              <h4>Reference</h4>
+              <div>
+                <a href="3789905a-08e7-1620-921f-bf0a0def8950.htm">Zebra.Sdk.Card.Printer Namespace</a>
+              </div>
+            </div>
+          </div>
+          <div id="InThisArticleColumn" class="column is-hidden-mobile">
+            <nav class="menu sticky is-hidden">
+              <p class="menu-label">
+                <strong>In This Article</strong>
+              </p>
+              <ul id="InThisArticleMenu" class="menu-list">
+                <li>
+                  <a class="quickLink">Definition</a>
+                </li>
+                <li>
+                  <a class="quickLink">Properties</a>
+                </li>
+                <li>
+                  <a class="quickLink">Methods</a>
+                </li>
+                <li>
+                  <a class="quickLink">See Also</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <footer id="PageFooter" class="footer border-top py-3 fixedFooter">
+        <div class="columns">
+          <div class="column">
+            <p>© 2024 Zebra Technologies Corporation and/or its affiliates. All rights reserved.</p> 
+				</div>
+          <div class="column"> 
+				</div>
+        </div>
+      </footer>
+    </div>
+    <script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script>
+  </body>
+</html>

@@ -1,0 +1,672 @@
+﻿<!DOCTYPE html >
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" href="../css/bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/presentationStyle.css" />
+    <link rel="stylesheet" href="../css/vs.min.css" />
+    <script src="../scripts/jquery-3.5.1.min.js"></script>
+    <script src="../scripts/clipboard.min.js"></script>
+    <script src="../scripts/highlight.min.js"></script>
+    <script src="../scripts/presentationStyle.js"></script>
+    <title>ZebraGraphics Interface</title>
+    <meta name="Title" content="ZebraGraphics" />
+    <meta name="Help.Id" content="T:Zebra.Sdk.Card.Graphics.ZebraGraphics" />
+    <meta name="Help.ContentType" content="Reference" />
+    <meta name="container" content="Zebra.Sdk.Card.Graphics" />
+    <meta name="guid" content="036fbd37-309e-8ee0-d72a-644e7a237e4f" />
+    <meta name="Description" content="Interface for Zebra card printer graphics." />
+    <meta name="tocFile" content="../toc/IDGB.xml" />
+  </head>
+  <body>
+    <div class="fixedLayout">
+      <div id="Header" class="fixedHeader">
+        <div class="pageHeader level mb-0 py-2 px-4">
+          <div id="TitleContainer" class="level-left">
+            <div id="DocumentationTitle" class="level-item">Zebra API (build v3.01.332)</div>
+          </div>
+          <div id="LangFilterSearchContainer" class="level-right">
+            <div class="level-item">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="CurrentLanguage"></span>
+                    <span class="icon is-small">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" role="menu">
+                  <div id="LanguageSelections" class="dropdown-content">
+                    <a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="level-item">
+              <form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <button id="SearchButton" type="submit" class="is-hidden"></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixedContent">
+        <nav class="breadcrumb my-1 px-2 border-bottom" role="navigation">
+          <ul id="TopicBreadcrumbs" />
+        </nav>
+        <div class="columns pl-5 pr-5 fixedContent">
+          <div id="ShowHideTOCColumn" class="column is-hidden-tablet">
+            <a id="ShowHideTOC">Show/Hide TOC</a>
+          </div>
+          <div id="TOCColumn" class="column is-hidden-mobile">
+            <nav class="toc">
+              <ul id="TableOfContents" class="toc-menu" />
+            </nav>
+          </div>
+          <div id="TopicContent" class="column content is-7">
+            <h1>Zebra<wbr />Graphics Interface</h1>
+            <div class="summary">
+            Interface for Zebra card printer graphics.
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Definition</h2>
+            <div id="IDBSection">
+              <strong>Namespace:</strong> <a href="929867ab-8736-59b4-e7d5-5d0e7b643196.htm">Zebra.Sdk.Card.Graphics</a><br /><strong>Assembly:</strong> SdkApi.Card.Desktop (in SdkApi.Card.Desktop.dll) Version: 3.01.332<div class="codeSnippet" data-codeSnippetLanguage="cs"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="identifier">ZebraGraphics</span> : <span class="identifier">ZebraGraphicsI</span>, 
+	<span class="identifier">IDisposable</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="vb"><div class="codeHeader"><span class="codeHeaderTitle">VB</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-vb"><span class="keyword">Public</span> <span class="keyword">Interface</span> <span class="identifier">ZebraGraphics</span>
+	<span class="keyword">Inherits</span> <span class="identifier">ZebraGraphicsI</span>, <span class="identifier">IDisposable</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="cpp"><div class="codeHeader"><span class="codeHeaderTitle">C++</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cpp"><span class="keyword">public</span> <span class="keyword">interface class</span> <span class="identifier">ZebraGraphics</span> : <span class="identifier">ZebraGraphicsI</span>, 
+	<span class="identifier">IDisposable</span></code></pre></div></div><dl class="implementsList"><dt>Implements</dt><dd><span class="noLink">IDisposable</span>, <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a></dd></dl></div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Example</h2>
+            <div id="IDBCSection">Demonstrates how to print graphics objects utilizing the color, mono, and overlay ribbon panels.
+            <div class="codeSnippet"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs">using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Threading;
+using Zebra.Sdk.Card.Containers;
+using Zebra.Sdk.Card.Enumerations;
+using Zebra.Sdk.Card.Graphics;
+using Zebra.Sdk.Card.Graphics.Barcode;
+using Zebra.Sdk.Card.Graphics.Enumerations;
+using Zebra.Sdk.Card.Printer;
+using Zebra.Sdk.Comm;
+
+public class PrintGraphicsExample {
+
+    private const int CARD_FEED_TIMEOUT = 30000;
+
+    public static void Main(string[] args) {
+        Connection connection = null;
+        ZebraCardPrinter zebraCardPrinter = null;
+
+        try {
+            connection = new UsbConnection("\\\\?\\usb#vid_0a5f&amp;pid_00a7#411738706#...");
+            connection.Open();
+
+            zebraCardPrinter = ZebraCardPrinterFactory.GetInstance(connection);
+
+            List&lt;GraphicsInfo&gt; graphicsData = DrawGraphics(zebraCardPrinter);
+
+            // Send job and poll for status
+            int jobId = zebraCardPrinter.Print(1, graphicsData);
+            JobStatusInfo jobStatus = PollJobStatus(jobId, zebraCardPrinter);
+            Console.WriteLine($"Job {jobId} completed with status '{jobStatus.PrintStatus}'.");
+        } catch (Exception e) {
+            Console.WriteLine($"Error printing graphics: {e.Message}");
+        } finally {
+            CloseQuietly(connection, zebraCardPrinter);
+        }
+    }
+
+    #region Graphics
+    /// &lt;exception cref="ConnectionException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="IOException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="NotSupportedException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="System.Security.SecurityException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="UnauthorizedAccessException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Card.Exceptions.ZebraCardException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Device.ZebraIllegalArgumentException"&gt;&lt;/exception&gt;
+    private static List&lt;GraphicsInfo&gt; DrawGraphics(ZebraCardPrinter zebraCardPrinter) {
+        List&lt;GraphicsInfo&gt; graphicsData = new List&lt;GraphicsInfo&gt;();
+        using (ZebraGraphics graphics = new ZebraCardGraphics(zebraCardPrinter)) {
+            graphicsData.Add(DrawColorImage(graphics, CardSide.Front));
+            graphicsData.Add(DrawMonoImage(graphics, CardSide.Front));
+            graphicsData.Add(DrawOverlayImage(graphics, CardSide.Front));
+        }
+        return graphicsData;
+    }
+
+    /// &lt;exception cref="Zebra.Sdk.Card.Exceptions.ZebraCardException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Device.ZebraIllegalArgumentException"&gt;&lt;/exception&gt;
+    private static GraphicsInfo DrawColorImage(ZebraGraphics graphics, CardSide side) {
+        // Color Rectangle and Line - front
+        try {
+            graphics.Initialize(0, 0, OrientationType.Landscape, PrintType.Color, null);
+
+            graphics.DrawRectangle(200, 50, 200, 100, 5, Color.Red, null);
+            graphics.DrawRoundedRectangle(500, 50, 200, 100, 20, 5, Color.Gray, null);
+            graphics.DrawLine(new PointF(200, 200), new PointF(700, 200), 5, Color.Blue);
+
+            ZebraCardImageI zebraCardImage = graphics.CreateImage();
+            return AddImage(side, PrintType.Color, 0, 0, -1, zebraCardImage);
+        } finally {
+            graphics.Clear();
+        }
+    }
+
+    /// &lt;exception cref="Zebra.Sdk.Card.Exceptions.ZebraCardException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Device.ZebraIllegalArgumentException"&gt;&lt;/exception&gt;
+    private static GraphicsInfo DrawMonoImage(ZebraGraphics graphics, CardSide side) {
+        try {
+            // Mono Text and Barcode - front
+            graphics.Initialize(0, 0, OrientationType.Landscape, PrintType.MonoK, null);
+
+            using (Font font = new Font("Arial", 12)) {
+                graphics.DrawText("Zebra Technologies", font, Color.Black, 200, 250);
+            }
+
+            using (QRCodeUtil qrCode = ZebraBarcodeFactory.GetQRCode(graphics)) {
+                qrCode.ValueToEncode = "https://www.zebra.com";
+                qrCode.DrawBarcode(675, 240, 75, 75);
+            }
+
+            ZebraCardImageI zebraCardImage = graphics.CreateImage();
+            return AddImage(side, PrintType.MonoK, 0, 0, -1, zebraCardImage);
+        } finally {
+            graphics.Clear();
+        }
+    }
+
+    /// &lt;exception cref="ArgumentException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="IOException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="NotSupportedException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="System.Security.SecurityException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="UnauthorizedAccessException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Card.Exceptions.ZebraCardException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Device.ZebraIllegalArgumentException"&gt;&lt;/exception&gt;
+    private static GraphicsInfo DrawOverlayImage(ZebraGraphics graphics, CardSide side) {
+        try {
+            // Overlay Image - front
+            graphics.Initialize(0, 0, OrientationType.Landscape, PrintType.Overlay, null);
+
+            string overlayImagePath = @"path\to\myOverlayImage.bmp";
+            byte[] imageData = File.ReadAllBytes(overlayImagePath);
+            graphics.DrawImage(imageData, 0, 0, 0, 0, RotationType.RotateNoneFlipNone);
+
+            ZebraCardImageI zebraCardImage = graphics.CreateImage();
+            return AddImage(side, PrintType.Overlay, 0, 0, -1, zebraCardImage);
+        } finally {
+            graphics.Clear();
+        }
+    }
+
+    private static GraphicsInfo AddImage(CardSide side, PrintType printType, int xOffset, int yOffset, int fillColor, ZebraCardImageI zebraCardImage) {
+        return new GraphicsInfo {
+            Side = side,
+            PrintType = printType,
+            GraphicType = zebraCardImage != null ? GraphicType.BMP : GraphicType.NA,
+            XOffset = xOffset,
+            YOffset = yOffset,
+            FillColor = fillColor,
+            Opacity = 0,
+            Overprint = false,
+            GraphicData = zebraCardImage ?? null
+        };
+    }
+    #endregion Graphics
+
+    #region JobStatus
+    /// &lt;exception cref="ArgumentException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="ConnectionException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="IOException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="OverflowException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Settings.SettingsException"&gt;&lt;/exception&gt;
+    /// &lt;exception cref="Zebra.Sdk.Card.Exceptions.ZebraCardException"&gt;&lt;/exception&gt;
+    private static JobStatusInfo PollJobStatus(int jobId, ZebraCardPrinter zebraCardPrinter) {
+        JobStatusInfo jobStatusInfo = new JobStatusInfo();
+        bool isFeeding = false;
+
+        long start = Math.Abs(Environment.TickCount);
+        while (true) {
+            jobStatusInfo = zebraCardPrinter.GetJobStatus(jobId);
+
+            if (!isFeeding) {
+                start = Math.Abs(Environment.TickCount);
+            }
+
+            isFeeding = jobStatusInfo.CardPosition.Contains("feeding");
+
+            string alarmDesc = jobStatusInfo.AlarmInfo.Value &gt; 0 ? $" ({jobStatusInfo.AlarmInfo.Description})" : "";
+            string errorDesc = jobStatusInfo.ErrorInfo.Value &gt; 0 ? $" ({jobStatusInfo.ErrorInfo.Description})" : "";
+
+            Console.WriteLine($"Job {jobId}: status:{jobStatusInfo.PrintStatus}, position:{jobStatusInfo.CardPosition}, alarm:{jobStatusInfo.AlarmInfo.Value}{alarmDesc}, error:{jobStatusInfo.ErrorInfo.Value}{errorDesc}");
+
+            if (jobStatusInfo.PrintStatus.Contains("done_ok")) {
+                break;
+            } else if (jobStatusInfo.PrintStatus.Contains("error") || jobStatusInfo.PrintStatus.Contains("cancelled")) {
+                Console.WriteLine($"The job encountered an error [{jobStatusInfo.ErrorInfo.Description}] and was cancelled.");
+                break;
+            } else if (jobStatusInfo.ErrorInfo.Value &gt; 0) {
+                Console.WriteLine($"The job encountered an error [{jobStatusInfo.ErrorInfo.Description}] and was cancelled.");
+                zebraCardPrinter.Cancel(jobId);
+            } else if (jobStatusInfo.PrintStatus.Contains("in_progress") &amp;&amp; isFeeding) {
+                if (Math.Abs(Environment.TickCount) &gt; start + CARD_FEED_TIMEOUT) {
+                    Console.WriteLine("The job timed out waiting for a card and was cancelled.");
+                    zebraCardPrinter.Cancel(jobId);
+                }
+            }
+
+            Thread.Sleep(1000);
+        }
+        return jobStatusInfo;
+    }
+    #endregion JobStatus
+
+    #region CleanUp
+    private static void CloseQuietly(Connection connection, ZebraCardPrinter zebraCardPrinter) {
+        try {
+            if (zebraCardPrinter != null) {
+                zebraCardPrinter.Destroy();
+            }
+        } catch { }
+
+        try {
+            if (connection != null) {
+                connection.Close();
+            }
+        } catch { }
+    }
+    #endregion CleanUp
+}</code></pre></div></div></div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Properties</h2>
+            <div id="IDSFASection">
+              <table id="PropertyList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="216b8749-7906-7e60-f071-4efeed39afdb.htm">BrightnessLevel</a>
+                  </td>
+                  <td>
+            Sets the brightness correction level to be applied during <a href="37102e4e-17fe-997a-63b1-fc3acfeb18d7.htm">CreateImage<span id="LSTE226415D_0" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="a71029fc-b2b3-1bea-44d0-f8fb066d639c.htm">ContrastLevel</a>
+                  </td>
+                  <td>
+            Sets the contrast correction level to be applied during <a href="37102e4e-17fe-997a-63b1-fc3acfeb18d7.htm">CreateImage<span id="LSTE226415D_1" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="72043845-0834-9087-4f8e-7626104504f4.htm">GammaLevel</a>
+                  </td>
+                  <td>
+            Sets the gamma correction level to be applied during <a href="37102e4e-17fe-997a-63b1-fc3acfeb18d7.htm">CreateImage<span id="LSTE226415D_2" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d6f70e95-b3c8-8641-5ab8-2d91efe205e6.htm">MonochromeConverionType</a>
+                  </td>
+                  <td>
+            Gets or Sets the monochrome conversion type to be used during <a href="37102e4e-17fe-997a-63b1-fc3acfeb18d7.htm">CreateImage<span id="LSTE226415D_3" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="9cac7ad4-f232-5a0e-a599-799b18d8e124.htm">PrinterModel</a>
+                  </td>
+                  <td>
+            Gets or Sets the printer model for use when creating or processing graphic images.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="72505024-6ae0-445f-e695-d23078ace567.htm">SaturationLevel</a>
+                  </td>
+                  <td>
+            Sets the saturation level to be applied during <a href="37102e4e-17fe-997a-63b1-fc3acfeb18d7.htm">CreateImage<span id="LSTE226415D_4" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="2ef49a2c-a3e7-533a-a3f5-9b55f8e759dd.htm">SmoothingMode</a>
+                  </td>
+                  <td>
+            Gets or sets the quality of the graphics rendering.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="edf90503-d871-f2a4-4113-05f83194db0d.htm">TextContrast</a>
+                  </td>
+                  <td>
+            Gets or sets the gamma correction level used for rendering text.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="48a3a32d-43ed-00e6-0582-f74787ae586f.htm">TextRenderingHint</a>
+                  </td>
+                  <td>
+            Gets or sets the quality of the text rendering.
+            </td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Methods</h2>
+            <div id="IDAFASection">
+              <table id="MethodList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="3fddbb3f-7359-f266-54f8-0cd6b485e0c8.htm">Clear</a>
+                  </td>
+                  <td>
+            Clears the drawing surface and all user specified parameters.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="37ff3ac1-b128-a71c-723a-a611e36a55c5.htm">Close</a>
+                  </td>
+                  <td>
+            Releases all resources.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="37102e4e-17fe-997a-63b1-fc3acfeb18d7.htm">CreateImage<span id="LSTE226415D_5" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>
+                  </td>
+                  <td>
+            Generates the final bitmap image.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="af9ef81f-950c-fa3f-5628-2ddb02c6df24.htm">CreateImage(String)</a>
+                  </td>
+                  <td>
+            Generates the final bitmap image.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d0148ef6-e16b-59fc-d545-28900f987931.htm">CropImage</a>
+                  </td>
+                  <td>
+            Crops an image to the supplied dimensions.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="noLink">Dispose</span>
+                  </td>
+                  <td>
+                    <br />(Inherited from <span class="noLink">IDisposable</span>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="3daecb64-1e7c-0ee6-ec72-f6c75ca30d89.htm">DrawEllipse</a>
+                  </td>
+                  <td>
+            Draws an ellipse at the specified coordinates.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="165506ba-ee46-bc2e-6ec1-e116e631fedf.htm">DrawImage(<span id="LSTE226415D_6" data-languageSpecificText="cpp=array&lt;"></span>Byte<span id="LSTE226415D_7" data-languageSpecificText="cpp=&gt;|cs=[]|vb=()|nu=[]|fs=[]"></span>, Int32, Int32, Int32, Int32, RotationType)</a>
+                  </td>
+                  <td>
+            Draws the image into the specified rectangle.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="137a1af5-f0db-863b-c859-d5f0d16e2463.htm">DrawImage(<span id="LSTE226415D_8" data-languageSpecificText="cpp=array&lt;"></span>Byte<span id="LSTE226415D_9" data-languageSpecificText="cpp=&gt;|cs=[]|vb=()|nu=[]|fs=[]"></span>, ImagePosition, Int32, Int32, Single, RotationType)</a>
+                  </td>
+                  <td>
+            Draws the image at the specified image position in the rectangle.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="79bc2715-ffd8-52d2-1fa2-020f64f45263.htm">DrawImage(<span id="LSTE226415D_10" data-languageSpecificText="cpp=array&lt;"></span>Byte<span id="LSTE226415D_11" data-languageSpecificText="cpp=&gt;|cs=[]|vb=()|nu=[]|fs=[]"></span>, Int32, Int32, Int32, Int32, Single, RotationType)</a>
+                  </td>
+                  <td>
+            Draws the image into the specified rectangle.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="fa63cecb-a338-883f-2fc6-a267bd90ae9c.htm">DrawLine</a>
+                  </td>
+                  <td>
+            Draws a line from/to the specified coordinates.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="9c431e2e-a1af-d732-8c35-4a5e1a940871.htm">DrawRectangle</a>
+                  </td>
+                  <td>
+            Draws a rectangle at the specified coordinates.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="b1ce0f5e-e844-72ee-6ca9-e016123615ee.htm">DrawRoundedRectangle</a>
+                  </td>
+                  <td>
+            Draws a round-cornered rectangle at the specified coordinates.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="78ace7e8-ce60-d98f-2da7-73433ba5d41d.htm">DrawText(String, Font, Color, Int32, Int32)</a>
+                  </td>
+                  <td>
+            Draws the text at the specified x and y coordinates.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d4fb3b3d-63fd-118c-50e8-9fa18ade2c1e.htm">DrawText(String, Font, Color, Int32, Int32, Int32)</a>
+                  </td>
+                  <td>
+            Draws the text at the specified x and y coordinates and center rotates the text to the specified angle.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="eaad5e1f-257f-8cd9-31e0-f81ed1ae655b.htm">DrawText(String, Font, Color, Int32, Int32, Int32, Int32, Int32)</a>
+                  </td>
+                  <td>
+            Draws the text into the specified rectangle.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="65f46936-4dd5-079c-7f8c-38e246fc8741.htm">DrawText(String, Font, Color, Int32, Int32, Int32, Int32, Int32, Boolean)</a>
+                  </td>
+                  <td>
+            Draws the text into the specified rectangle, optionally reducing the size of the font to fit the specified rectangle.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="a4d71509-816e-5955-8156-1abfaaa1565b.htm">DrawText(String, Font, Color, Int32, Int32, Int32, Int32, Int32, TextAlignment, TextAlignment)</a>
+                  </td>
+                  <td>
+            Draws the text into the specified rectangle using the specified alignments.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="8506308b-a810-7267-a8c2-eaced7de352b.htm">DrawText(String, Font, Color, Int32, Int32, Int32, Int32, Int32, TextAlignment, TextAlignment, Boolean)</a>
+                  </td>
+                  <td>
+            Draws the text into the specified rectangle using the specified alignments, optionally reducing the size of the font to fit the specified rectangle.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="7962fadf-8a67-4dff-ab87-9e335fcd0dce.htm">ExtractBlackImageData</a>
+                  </td>
+                  <td>
+            Separates the monochrome and color data from the specified image data using the specified threshold values.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="2cd7980d-c80a-67f5-1def-95f469b34c22.htm">ExtractHalfPanelImageData</a>
+                  </td>
+                  <td>
+            Attempts to identify and extract the color and non-color half panel regions of the source image.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="20175760-e1b7-1071-69bb-47aaad426861.htm">ImageDataToImage</a>
+                  </td>
+                  <td>
+            Converts image data to an Image object.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="ac7301f3-f194-178f-298d-5b358969ecca.htm">ImageToImageData</a>
+                  </td>
+                  <td>
+            Converts an image to a byte array.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="f9b60724-3ae6-dada-8f5c-b3c64bd78fa2.htm">Initialize(Int32, Int32, OrientationType, PrintType, Nullable<span id="LSTE226415D_12" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>Color<span id="LSTE226415D_13" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a>
+                  </td>
+                  <td>
+            Initializes the drawing surface.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="df4fb207-865d-5e4e-0fde-c8a84f06bb06.htm">Initialize(Int32, Int32, OrientationType, PrintType, Nullable<span id="LSTE226415D_14" data-languageSpecificText="cs=&lt;|vb=(Of |cpp=&lt;|fs=&lt;'|nu=("></span>Int32<span id="LSTE226415D_15" data-languageSpecificText="cs=&gt;|vb=)|cpp=&gt;|fs=&gt;|nu=)"></span>)</a>
+                  </td>
+                  <td>
+            Initializes the drawing surface.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="8336670f-3b88-f310-bd24-3cb01bf8b65a.htm">RotateImage(<span id="LSTE226415D_16" data-languageSpecificText="cpp=array&lt;"></span>Byte<span id="LSTE226415D_17" data-languageSpecificText="cpp=&gt;|cs=[]|vb=()|nu=[]|fs=[]"></span>, RotationType)</a>
+                  </td>
+                  <td>
+            Rotates the image by the specified <span class="code">rotationType</span>.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="bff70dca-ef57-21d0-1f45-b8d19ef6a0e1.htm">RotateImage(<span id="LSTE226415D_18" data-languageSpecificText="cpp=array&lt;"></span>Byte<span id="LSTE226415D_19" data-languageSpecificText="cpp=&gt;|cs=[]|vb=()|nu=[]|fs=[]"></span>, Int32, Int32, RotationType)</a>
+                  </td>
+                  <td>
+            Rotates the image by the specified <span class="code">rotationType</span> and then resizes it.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="ec67eff3-ca36-6689-5a4e-6523ab83cfb8.htm">SetColorScale</a>
+                  </td>
+                  <td>
+            Sets the color scale correction values for red, green, and blue pixel values during <a href="37102e4e-17fe-997a-63b1-fc3acfeb18d7.htm">CreateImage<span id="LSTE226415D_20" data-languageSpecificText="cs=()|vb=|cpp=()|nu=()|fs=()"></span></a>.
+            <br />(Inherited from <a href="694b9750-302f-a0e2-8126-9a00ccc59cf9.htm">ZebraGraphicsI</a>)</td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>See Also</h2>
+            <div id="seeAlsoSection">
+              <h4>Reference</h4>
+              <div>
+                <a href="929867ab-8736-59b4-e7d5-5d0e7b643196.htm">Zebra.Sdk.Card.Graphics Namespace</a>
+              </div>
+            </div>
+          </div>
+          <div id="InThisArticleColumn" class="column is-hidden-mobile">
+            <nav class="menu sticky is-hidden">
+              <p class="menu-label">
+                <strong>In This Article</strong>
+              </p>
+              <ul id="InThisArticleMenu" class="menu-list">
+                <li>
+                  <a class="quickLink">Definition</a>
+                </li>
+                <li>
+                  <a class="quickLink">Example</a>
+                </li>
+                <li>
+                  <a class="quickLink">Properties</a>
+                </li>
+                <li>
+                  <a class="quickLink">Methods</a>
+                </li>
+                <li>
+                  <a class="quickLink">See Also</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <footer id="PageFooter" class="footer border-top py-3 fixedFooter">
+        <div class="columns">
+          <div class="column">
+            <p>© 2024 Zebra Technologies Corporation and/or its affiliates. All rights reserved.</p> 
+				</div>
+          <div class="column"> 
+				</div>
+        </div>
+      </footer>
+    </div>
+    <script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script>
+  </body>
+</html>

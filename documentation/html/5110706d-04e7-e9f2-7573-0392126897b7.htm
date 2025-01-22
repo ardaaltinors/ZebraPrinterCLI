@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html >
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" href="../css/bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/presentationStyle.css" />
+    <link rel="stylesheet" href="../css/vs.min.css" />
+    <script src="../scripts/jquery-3.5.1.min.js"></script>
+    <script src="../scripts/clipboard.min.js"></script>
+    <script src="../scripts/highlight.min.js"></script>
+    <script src="../scripts/presentationStyle.js"></script>
+    <title>DeviceUtil Methods</title>
+    <meta name="Title" content="Methods" />
+    <meta name="Help.Id" content="Methods.T:Zebra.Sdk.Card.Device.DeviceUtil" />
+    <meta name="Help.ContentType" content="Reference" />
+    <meta name="container" content="Zebra.Sdk.Card.Device" />
+    <meta name="guid" content="5110706d-04e7-e9f2-7573-0392126897b7" />
+    <meta name="tocFile" content="../toc/IDACB.xml" />
+  </head>
+  <body>
+    <div class="fixedLayout">
+      <div id="Header" class="fixedHeader">
+        <div class="pageHeader level mb-0 py-2 px-4">
+          <div id="TitleContainer" class="level-left">
+            <div id="DocumentationTitle" class="level-item">Zebra API (build v3.01.332)</div>
+          </div>
+          <div id="LangFilterSearchContainer" class="level-right">
+            <div class="level-item">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="CurrentLanguage"></span>
+                    <span class="icon is-small">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" role="menu">
+                  <div id="LanguageSelections" class="dropdown-content">
+                    <a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="level-item">
+              <form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <button id="SearchButton" type="submit" class="is-hidden"></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixedContent">
+        <nav class="breadcrumb my-1 px-2 border-bottom" role="navigation">
+          <ul id="TopicBreadcrumbs" />
+        </nav>
+        <div class="columns pl-5 pr-5 fixedContent">
+          <div id="ShowHideTOCColumn" class="column is-hidden-tablet">
+            <a id="ShowHideTOC">Show/Hide TOC</a>
+          </div>
+          <div id="TOCColumn" class="column is-hidden-mobile">
+            <nav class="toc">
+              <ul id="TableOfContents" class="toc-menu" />
+            </nav>
+          </div>
+          <div id="TopicContent" class="column content is-7">
+            <h1>Device<wbr />Util Methods</h1>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Methods</h2>
+            <div id="IDADASection">
+              <table id="MethodList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="29dd5e3d-bc73-f572-0775-8bee7e113fb7.htm">CheckForAlarm</a>
+                  </td>
+                  <td>
+            Gets the printer's current alarm code.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="82cbddc4-0de7-c911-0d74-6af458cae80d.htm">ClearOcpDisplay</a>
+                  </td>
+                  <td>
+            Clears any custom line data from the OCP and returns it to the main view.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="f33fdd58-4f60-5f1d-673d-b734acaf3f25.htm">GetCardCount</a>
+                  </td>
+                  <td>
+            Returns the printer's total card count values.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="cbb79803-d3cd-9dc8-9bfe-27c314f2768d.htm">GetMagneticEncoderConfiguration</a>
+                  </td>
+                  <td>
+            Returns the printer's magnetic encoder configuration.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="8f7c7d59-00d7-07d3-d9ec-e26916ff80c8.htm">GetMediaInformation</a>
+                  </td>
+                  <td>
+            Returns a List of the printer's installed media information.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="6c5c2703-d932-0e50-5fe6-ebb28b8bc5e8.htm">GetOcpDisplay</a>
+                  </td>
+                  <td>
+            Returns the line data currently displayed on the printer's OCP.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="5bc1edb3-e336-bb5f-9472-140feed89977.htm">GetPrintCapability</a>
+                  </td>
+                  <td>
+            Returns the transfer type of the printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d1c98e10-fed0-d156-7e46-6e2cfcbf7ec2.htm">GetPrinterInformation</a>
+                  </td>
+                  <td>
+            Returns the printer's specific device information.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="bc140e7a-e801-aaf4-6c40-ff4be53e57d8.htm">GetPrinterStatus</a>
+                  </td>
+                  <td>
+            Returns the printer's current status information.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="36b9d82f-f536-d343-d378-d34d366e356c.htm">GetSensorStates</a>
+                  </td>
+                  <td>
+            Returns the printer's sensor states.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="5feb0887-4d66-f2df-b994-21ccb527b2bd.htm">GetSensorValues</a>
+                  </td>
+                  <td>
+            Returns the printer's sensor values.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="ebea096c-d002-7448-80e0-9a1ed9eb5f00.htm">GetSmartCardConfigurations</a>
+                  </td>
+                  <td>
+            Returns the printer's smart card encoder configurations.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e6aa11aa-182f-6ca3-15be-5c67db3351c9.htm">HasLaminator</a>
+                  </td>
+                  <td>
+            Returns true if the printer includes a laminator.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="c60077dd-d285-6d8b-96fa-f935d9bf285e.htm">HasMagneticEncoder</a>
+                  </td>
+                  <td>
+            Returns true if the printer includes a magnetic encoder.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="4c4d5419-aa80-173e-a253-7eefed6c6e99.htm">HasSmartCardEncoder</a>
+                  </td>
+                  <td>
+            Returns true if the printer includes a smart card encoder.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e79241c3-c85c-a9a6-6be4-cf7e19401eb1.htm">RegisterAlarmHandler</a>
+                  </td>
+                  <td>
+            Registers a callback routine for asynchronous reporting of printer alarm conditions.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="fc4720c7-5b35-1f27-58fa-c536c6cce381.htm">Reset</a>
+                  </td>
+                  <td>
+            Resets the printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="c4c4ac2f-072a-5004-d2be-9eab7dcc7041.htm">SetOcpDisplay</a>
+                  </td>
+                  <td>
+            Displays the specified line data on the printer's OCP.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="f1d93e47-c4de-6803-6e72-d6bfa3c6e7e4.htm">UpdateFirmware(String)</a>
+                  </td>
+                  <td>
+            Updates the printers firmware.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="8056ecde-5aba-22f7-3b33-c16377918360.htm">UpdateFirmware(String, CardFirmwareUpdateHandler)</a>
+                  </td>
+                  <td>
+            Updates the printers firmware.
+            </td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>See Also</h2>
+            <div id="seeAlsoSection">
+              <h4>Reference</h4>
+              <div>
+                <a href="6cfe690b-7c2b-1115-7dc7-5599af48ed66.htm">DeviceUtil Interface</a>
+              </div>
+              <div>
+                <a href="738747da-164d-3156-971d-8ee5d1eebf4f.htm">Zebra.Sdk.Card.Device Namespace</a>
+              </div>
+            </div>
+          </div>
+          <div id="InThisArticleColumn" class="column is-hidden-mobile">
+            <nav class="menu sticky is-hidden">
+              <p class="menu-label">
+                <strong>In This Article</strong>
+              </p>
+              <ul id="InThisArticleMenu" class="menu-list">
+                <li>
+                  <a class="quickLink">Methods</a>
+                </li>
+                <li>
+                  <a class="quickLink">See Also</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <footer id="PageFooter" class="footer border-top py-3 fixedFooter">
+        <div class="columns">
+          <div class="column">
+            <p>© 2024 Zebra Technologies Corporation and/or its affiliates. All rights reserved.</p> 
+				</div>
+          <div class="column"> 
+				</div>
+        </div>
+      </footer>
+    </div>
+    <script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+});</script>
+  </body>
+</html>

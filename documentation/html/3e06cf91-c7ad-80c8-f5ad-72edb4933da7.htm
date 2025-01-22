@@ -1,0 +1,462 @@
+﻿<!DOCTYPE html >
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" href="../css/bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/presentationStyle.css" />
+    <link rel="stylesheet" href="../css/vs.min.css" />
+    <script src="../scripts/jquery-3.5.1.min.js"></script>
+    <script src="../scripts/clipboard.min.js"></script>
+    <script src="../scripts/highlight.min.js"></script>
+    <script src="../scripts/presentationStyle.js"></script>
+    <title>PrinterUtil Methods</title>
+    <meta name="Title" content="Methods" />
+    <meta name="Help.Id" content="Methods.T:Zebra.Sdk.Printer.PrinterUtil" />
+    <meta name="Help.ContentType" content="Reference" />
+    <meta name="container" content="Zebra.Sdk.Printer" />
+    <meta name="guid" content="3e06cf91-c7ad-80c8-f5ad-72edb4933da7" />
+    <meta name="tocFile" content="../toc/IDVXB.xml" />
+  </head>
+  <body>
+    <div class="fixedLayout">
+      <div id="Header" class="fixedHeader">
+        <div class="pageHeader level mb-0 py-2 px-4">
+          <div id="TitleContainer" class="level-left">
+            <div id="DocumentationTitle" class="level-item">Zebra API (build v3.01.332)</div>
+          </div>
+          <div id="LangFilterSearchContainer" class="level-right">
+            <div class="level-item">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="CurrentLanguage"></span>
+                    <span class="icon is-small">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" role="menu">
+                  <div id="LanguageSelections" class="dropdown-content">
+                    <a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="level-item">
+              <form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <button id="SearchButton" type="submit" class="is-hidden"></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixedContent">
+        <nav class="breadcrumb my-1 px-2 border-bottom" role="navigation">
+          <ul id="TopicBreadcrumbs" />
+        </nav>
+        <div class="columns pl-5 pr-5 fixedContent">
+          <div id="ShowHideTOCColumn" class="column is-hidden-tablet">
+            <a id="ShowHideTOC">Show/Hide TOC</a>
+          </div>
+          <div id="TOCColumn" class="column is-hidden-mobile">
+            <nav class="toc">
+              <ul id="TableOfContents" class="toc-menu" />
+            </nav>
+          </div>
+          <div id="TopicContent" class="column content is-7">
+            <h1>Printer<wbr />Util Methods</h1>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Methods</h2>
+            <div id="IDADASection">
+              <table id="MethodList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="e11faaeb-f706-8730-3347-a98ef063dcc5.htm">ConvertGraphic(String, ZebraImageI, Stream)</a>
+                  </td>
+                  <td>
+            Encodes supplied image in either ZPL or CPCL after dithering and resizing.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="fd08ae2d-10f2-9fea-49db-d51cbcbfc909.htm">ConvertGraphic(String, ZebraImageI, Int32, Int32, Stream)</a>
+                  </td>
+                  <td>
+            Encodes supplied image in either ZPL or CPCL after dithering and resizing.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="44170028-ef4f-e3d8-cefa-4e2ab05ab79b.htm">CreateBackup</a>
+                  </td>
+                  <td>
+            Create a backup of your printer's settings, alerts, and files.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="cb9391ba-8314-374e-e1b2-dfd6f8ff4bcc.htm">CreateProfile</a>
+                  </td>
+                  <td>
+            Create a profile of your printer's settings, alerts, and files for cloning to other printers.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="65098efe-5e75-0d96-9af6-3e97c516104d.htm">DeleteFile</a>
+                  </td>
+                  <td>
+            Deletes file(s) from the printer and reports what files were actually removed.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="59cf1330-0304-6e0b-2498-9361d3086b2f.htm">DeleteFileReportDeleted</a>
+                  </td>
+                  <td>
+            Deletes file(s) from the printer and reports what files were actually removed.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="noLink">Equals</span>
+                  </td>
+                  <td>
+                    <br />(Inherited from <span class="noLink">Object</span>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="5c497a3e-7aea-03c6-4b3d-954b5d004fff.htm">GetCurrentStatus</a>
+                  </td>
+                  <td>
+            Returns a new instance of <span class="code">PrinterStatus</span> that can be used to determine the status of a printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="noLink">GetHashCode</span>
+                  </td>
+                  <td>
+                    <br />(Inherited from <span class="noLink">Object</span>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="53108318-b677-0877-9223-ec6f50707068.htm">GetObjectFromPrinter(String, String)</a>
+                  </td>
+                  <td>
+            Retrieves a file from the printer's file system and returns the contents of that file as a byte[].
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="c5ec722a-d42d-5625-bece-0a748333b478.htm">GetObjectFromPrinter(Stream, String, String)</a>
+                  </td>
+                  <td>
+            Retrieves a file from the printer's file system and returns the contents of that file as a byte[].
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e2c49af5-01a0-bfaf-7266-4dd99038df4f.htm">GetObjectFromPrinterViaFtp(String, String, String)</a>
+                  </td>
+                  <td>
+            Retrieves a file from the printer's file system and returns the contents of that file as a byte[].
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="1d03a22b-c9dd-067c-1f8a-715e9abbeefa.htm">GetObjectFromPrinterViaFtp(Stream, String, String, String)</a>
+                  </td>
+                  <td>
+            Retrieves a file from the printer's file system and returns the contents of that file as a byte[].
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="47cfc029-0065-576f-fdfa-37e7f1a93dce.htm">GetOdometerStatus</a>
+                  </td>
+                  <td>
+            Retrieves status of the printer odometer which includes the total print length, head clean counter, label dot
+            length, head new, latch open counter, and both user resettable counters.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="26932bde-bd6e-92e0-fd0a-3c483a3a860c.htm">GetPortStatus</a>
+                  </td>
+                  <td>
+            Retrieves a list of currently open tcp ports on the printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="dc7cce34-7699-1804-c46f-5679124c3722.htm">GetPrinterStatus</a>
+                  </td>
+                  <td>
+            Retrieves status of the printer which includes any error messages currently set along with the number of labels
+            remaining in queue, number of labels remaining in batch, and whether or not a label is currently being processed.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="bcbdd7fa-412f-7c57-f671-4d4d4a22152c.htm">GetSettingsFromPrinter</a>
+                  </td>
+                  <td>
+            Retrieve all settings and their attributes from the specified printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="noLink">GetType</span>
+                  </td>
+                  <td>
+                    <br />(Inherited from <span class="noLink">Object</span>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="fec7d856-a4e2-bcfa-4268-5c0f7dd05905.htm">ListFiles</a>
+                  </td>
+                  <td>
+            Retrieves the names of the files which are stored on the device.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="815ea550-9ed1-f463-f20f-1f96270e0593.htm">LoadBackup(String, String)</a>
+                  </td>
+                  <td>
+            Takes settings, alerts, and files from a backup, and applies them to a printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="51b6aa9c-9400-9a9d-1e40-74eceaf9d907.htm">LoadBackup(String, String, Boolean)</a>
+                  </td>
+                  <td>
+            Takes settings, alerts, and files from a backup, and applies them to a printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="b59fe656-be6a-790f-334b-411a0d39ea95.htm">LoadProfile(String, String, FileDeletionOption)</a>
+                  </td>
+                  <td>
+            Takes settings, alerts, and files from a profile, and applies them to a printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="44943abd-85e7-0bf9-b3b7-e03154cf8845.htm">LoadProfile(String, String, FileDeletionOption, Boolean)</a>
+                  </td>
+                  <td>
+            Takes settings, alerts, and files from a profile, and applies them to a printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="069a91a2-1859-fb82-edbf-abd7b63e1bf3.htm">PrintConfigLabel</a>
+                  </td>
+                  <td>
+            Causes the specified printer to print a configuration label.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="5ca0f2b0-a675-af32-d0ed-694297589130.htm">PrintDirectoryLabel</a>
+                  </td>
+                  <td>
+            Causes the specified printer to print a directory listing of all the files saved on the printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="6a899ccd-ec45-071b-f4f6-a8791c50ead1.htm">PrintNetworkConfigLabel</a>
+                  </td>
+                  <td>
+            Causes the specified printer to print a network configuration label.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="55c5ce61-40e8-e691-721d-2faf82831bf1.htm">QuickStatus</a>
+                  </td>
+                  <td>
+            Retrieves the quick status of the printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="32f7ebb9-a1bc-a125-1bb7-4cea90f75cf1.htm">ResetNetwork</a>
+                  </td>
+                  <td>
+            Resets the network of the specified printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="ea8a9d15-0cd7-a689-0f5a-6084a750956b.htm">ResetPrinter</a>
+                  </td>
+                  <td>
+            Resets the specified printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="384c0777-f382-fb3d-76fb-82f8f7144e3c.htm">RestoreNetworkDefaults</a>
+                  </td>
+                  <td>
+            Restores the printer's network settings to their factory default configuration.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="083314e7-db51-3fbd-b011-e85806a26240.htm">RestorePrinterDefaults</a>
+                  </td>
+                  <td>
+            Restores the printer's settings to their factory default configuration.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="02356ed0-97e4-765a-7179-6ed677d6842e.htm">SendContents(String, Stream)</a>
+                  </td>
+                  <td>
+            Send contents of <span class="code">data</span> directly to the device specified via <span class="code">connectionString</span> using UTF-8 encoding.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="13d46e10-781b-c537-5916-f320fae59999.htm">SendContents(String, String)</a>
+                  </td>
+                  <td>
+            Send contents of <span class="code">data</span> directly to the device specified via <span class="code">connectionString</span> using UTF-8 encoding.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="31255f2a-56b1-5767-0372-835681907049.htm">SendContents(String, Stream, String)</a>
+                  </td>
+                  <td>
+            Send contents of <span class="code">data</span> directly to the device specified via <span class="code">connectionString</span> using <span class="code">encoding</span>.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="38c16cde-03bd-afbe-e440-f39df0aa3d6f.htm">SendContents(String, String, String)</a>
+                  </td>
+                  <td>
+            Send contents of <span class="code">data</span> directly to the device specified via <span class="code">connectionString</span> using <span class="code">encoding</span>.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="e96ccd8e-910a-7baa-342b-d67eb059dbb6.htm">SendJSON</a>
+                  </td>
+                  <td>
+            Send contents of <span class="code">data</span> directly to the device specified via <span class="code">connectionString</span> using <span class="code">encoding</span>.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="7c246e76-b3ec-c2ea-2cf8-cd42eb05985a.htm">SetClock</a>
+                  </td>
+                  <td>
+            Set the RTC time and date on the printer.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="d79c6636-32e0-64db-6300-04c8f5894f0c.htm">StoreFile</a>
+                  </td>
+                  <td>
+            Stores the file on the printer at the specified location and name using any required file wrappers.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <span class="noLink">ToString</span>
+                  </td>
+                  <td>
+                    <br />(Inherited from <span class="noLink">Object</span>)</td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="0471d017-7592-a7cb-85af-005778f66a09.htm">UpdateFirmware</a>
+                  </td>
+                  <td>
+            Update the printer firmware.
+            </td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>See Also</h2>
+            <div id="seeAlsoSection">
+              <h4>Reference</h4>
+              <div>
+                <a href="f2d4e5aa-1aec-bf68-d5cd-8d663ad2867c.htm">PrinterUtil Class</a>
+              </div>
+              <div>
+                <a href="1e3e78b3-b3c7-320c-3b01-de4d2e41beaf.htm">Zebra.Sdk.Printer Namespace</a>
+              </div>
+            </div>
+          </div>
+          <div id="InThisArticleColumn" class="column is-hidden-mobile">
+            <nav class="menu sticky is-hidden">
+              <p class="menu-label">
+                <strong>In This Article</strong>
+              </p>
+              <ul id="InThisArticleMenu" class="menu-list">
+                <li>
+                  <a class="quickLink">Methods</a>
+                </li>
+                <li>
+                  <a class="quickLink">See Also</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <footer id="PageFooter" class="footer border-top py-3 fixedFooter">
+        <div class="columns">
+          <div class="column">
+            <p>© 2024 Zebra Technologies Corporation and/or its affiliates. All rights reserved.</p> 
+				</div>
+          <div class="column"> 
+				</div>
+        </div>
+      </footer>
+    </div>
+    <script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+});</script>
+  </body>
+</html>

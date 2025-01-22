@@ -1,0 +1,219 @@
+﻿<!DOCTYPE html >
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="shortcut icon" href="../icons/favicon.ico" />
+    <link rel="stylesheet" href="../css/bulma.css" />
+    <link rel="stylesheet" href="../css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../css/presentationStyle.css" />
+    <link rel="stylesheet" href="../css/vs.min.css" />
+    <script src="../scripts/jquery-3.5.1.min.js"></script>
+    <script src="../scripts/clipboard.min.js"></script>
+    <script src="../scripts/highlight.min.js"></script>
+    <script src="../scripts/presentationStyle.js"></script>
+    <title>LaminatorUtilZmotif Interface</title>
+    <meta name="Title" content="LaminatorUtilZmotif" />
+    <meta name="Help.Id" content="T:Zebra.Sdk.Card.Zmotif.Device.LaminatorUtilZmotif" />
+    <meta name="Help.ContentType" content="Reference" />
+    <meta name="container" content="Zebra.Sdk.Card.Zmotif.Device" />
+    <meta name="guid" content="b2d3d8db-50f6-2410-18be-fb3ad084fa3d" />
+    <meta name="Description" content="Interface for laminator utility functions." />
+    <meta name="tocFile" content="../toc/IDQB.xml" />
+  </head>
+  <body>
+    <div class="fixedLayout">
+      <div id="Header" class="fixedHeader">
+        <div class="pageHeader level mb-0 py-2 px-4">
+          <div id="TitleContainer" class="level-left">
+            <div id="DocumentationTitle" class="level-item">Zebra API (build v3.01.332)</div>
+          </div>
+          <div id="LangFilterSearchContainer" class="level-right">
+            <div class="level-item">
+              <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                  <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+                    <span id="CurrentLanguage"></span>
+                    <span class="icon is-small">
+                      <i class="fa fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                  </button>
+                </div>
+                <div class="dropdown-menu" role="menu">
+                  <div id="LanguageSelections" class="dropdown-content">
+                    <a class="dropdown-item languageFilterItem" data-languageId="cs">C#</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="vb">VB</a>
+                    <a class="dropdown-item languageFilterItem" data-languageId="cpp">C++</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="level-item">
+              <form id="SearchForm" action="#" onsubmit="TransferToSearchPage(); return false;">
+                <div class="field">
+                  <div class="control has-icons-left">
+                    <input id="SearchTerms" class="input" type="text" maxlength="200" placeholder="Search" />
+                    <span class="icon is-small is-left">
+                      <i class="fa fa-search"></i>
+                    </span>
+                    <button id="SearchButton" type="submit" class="is-hidden"></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fixedContent">
+        <nav class="breadcrumb my-1 px-2 border-bottom" role="navigation">
+          <ul id="TopicBreadcrumbs" />
+        </nav>
+        <div class="columns pl-5 pr-5 fixedContent">
+          <div id="ShowHideTOCColumn" class="column is-hidden-tablet">
+            <a id="ShowHideTOC">Show/Hide TOC</a>
+          </div>
+          <div id="TOCColumn" class="column is-hidden-mobile">
+            <nav class="toc">
+              <ul id="TableOfContents" class="toc-menu" />
+            </nav>
+          </div>
+          <div id="TopicContent" class="column content is-7">
+            <h1>Laminator<wbr />Util<wbr />Zmotif Interface</h1>
+            <div class="summary">
+            Interface for laminator utility functions.
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Definition</h2>
+            <div id="IDBSection">
+              <strong>Namespace:</strong> <a href="0abc6b2f-2364-d9d1-66a5-b2f2df33f21f.htm">Zebra.Sdk.Card.Zmotif.Device</a><br /><strong>Assembly:</strong> SdkApi.Card.Core (in SdkApi.Card.Core.dll) Version: 3.01.332<div class="codeSnippet" data-codeSnippetLanguage="cs"><div class="codeHeader"><span class="codeHeaderTitle">C#</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cs"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="identifier">LaminatorUtilZmotif</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="vb"><div class="codeHeader"><span class="codeHeaderTitle">VB</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-vb"><span class="keyword">Public</span> <span class="keyword">Interface</span> <span class="identifier">LaminatorUtilZmotif</span></code></pre></div></div><div class="codeSnippet is-hidden" data-codeSnippetLanguage="cpp"><div class="codeHeader"><span class="codeHeaderTitle">C++</span><span class="buttons"><button class="button is-small is-light copyCode" title="Copy"><span class="icon is-small"><i class="fa fa-copy"></i></span><span>Copy</span></button></span></div><div class="codePanel hljs"><pre xml:space="preserve"><code class="language-cpp"><span class="keyword">public</span> <span class="keyword">interface class</span> <span class="identifier">LaminatorUtilZmotif</span></code></pre></div></div></div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>Methods</h2>
+            <div id="IDAEASection">
+              <table id="MethodList" class="table is-hoverable">
+                <tr>
+                  <td>
+                    <a href="3a608432-f97e-75c0-95c6-f9254d81e10a.htm">CalibrateLaminate</a>
+                  </td>
+                  <td>
+            Calibrates the Laminator.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="627f2687-3aeb-476d-518e-b2d7ea4e2793.htm">GetLaminatorCardCount</a>
+                  </td>
+                  <td>
+            Returns the laminator's card count.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="91730b34-b7bb-fc79-b3b1-60c74d17223d.htm">GetLaminatorInformation</a>
+                  </td>
+                  <td>
+            Returns the laminator's device specific information.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="6fe8f432-abda-4005-83d6-5136ccc47f90.htm">GetLaminatorOdometerValues</a>
+                  </td>
+                  <td>
+            Returns the odometer names and values.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="aa721a56-87b7-2da9-84e9-d0b41f09b178.htm">GetLaminatorSensorStates</a>
+                  </td>
+                  <td>
+            Returns the sensor names and states.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="c61c42ae-985a-9341-139b-26154cc7d1d7.htm">GetLaminatorSensorValues</a>
+                  </td>
+                  <td>
+            Returns the sensor names and values.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="3a72f78d-d42b-6045-5498-f6e0a9aa3c07.htm">GetLaminatorStatus</a>
+                  </td>
+                  <td>
+            Returns the laminator's current status.
+            </td>
+                </tr>
+                <tr>
+                  <td>
+                    <a href="01d0411b-a849-34a4-f999-423dce75b2ab.htm">RestoreLaminatorDefaultConfiguration</a>
+                  </td>
+                  <td>
+            Restores the laminator's settings to their default configuration values.
+            </td>
+                </tr>
+              </table>
+            </div>
+            <h2 class="quickLinkHeader">
+              <span class="icon toggleSection" tabindex="0">
+                <i class="fa fa-angle-down"></i>
+              </span>See Also</h2>
+            <div id="seeAlsoSection">
+              <h4>Reference</h4>
+              <div>
+                <a href="0abc6b2f-2364-d9d1-66a5-b2f2df33f21f.htm">Zebra.Sdk.Card.Zmotif.Device Namespace</a>
+              </div>
+            </div>
+          </div>
+          <div id="InThisArticleColumn" class="column is-hidden-mobile">
+            <nav class="menu sticky is-hidden">
+              <p class="menu-label">
+                <strong>In This Article</strong>
+              </p>
+              <ul id="InThisArticleMenu" class="menu-list">
+                <li>
+                  <a class="quickLink">Definition</a>
+                </li>
+                <li>
+                  <a class="quickLink">Methods</a>
+                </li>
+                <li>
+                  <a class="quickLink">See Also</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <footer id="PageFooter" class="footer border-top py-3 fixedFooter">
+        <div class="columns">
+          <div class="column">
+            <p>© 2024 Zebra Technologies Corporation and/or its affiliates. All rights reserved.</p> 
+				</div>
+          <div class="column"> 
+				</div>
+        </div>
+      </footer>
+    </div>
+    <script>$(function(){
+SetDefaultLanguage("cs");
+LoadTocFile(null, null);
+InitializeQuickLinks();
+
+$(".toggleSection" ).click(function () {
+    SectionExpandCollapse(this);
+});
+
+$(".toggleSection").keypress(function () {
+    SectionExpandCollapseCheckKey(this, event)
+});
+hljs.highlightAll();
+});</script>
+  </body>
+</html>

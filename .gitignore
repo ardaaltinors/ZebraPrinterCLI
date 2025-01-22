@@ -1,0 +1,32 @@
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userprefs
+
+# Visual Studio Code settings
+.vscode/
+# Visual Studio temporary files
+.vs/
+
+# Rider settings
+.idea/
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# NuGet packages
+*.nupkg
+packages/
+
+# Other
+*.DS_Store
