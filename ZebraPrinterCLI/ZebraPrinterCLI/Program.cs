@@ -3,46 +3,37 @@ using System.Collections.Generic;
 using System.Threading;
 using Zebra.Sdk.Printer;
 using Zebra.Sdk.Printer.Discovery;
+using ZebraPrinterCLI.Config;
+using ZebraPrinterCLI.Services;
+using Microsoft.Extensions.Configuration;
 
 namespace ZebraPrinterCLI
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             try
             {
+                // Build configuration
+                IConfiguration configuration = new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                    .Build();
+
+                // Get printer configuration from appsettings.json
+                var printerConfig = configuration.GetSection("PrinterConfig").Get<PrinterConfig>();
+                
+                if (printerConfig == null)
+                {
+                    throw new InvalidOperationException("Failed to load printer configuration from appsettings.json");
+                }
+
+                var discoveryService = new PrinterDiscoveryService(printerConfig);
                 Console.WriteLine("Starting printer discovery...");
 
-                // Search for USB printers
-                Console.WriteLine("Searching for USB printers...");
-                List<DiscoveredUsbPrinter> usbPrinters = UsbDiscoverer.GetZebraUsbPrinters();
-                Console.WriteLine($"Discovered {usbPrinters.Count} USB printers.");
-                foreach (DiscoveredUsbPrinter printer in usbPrinters)
-                {
-                    Console.WriteLine($"USB Printer: {printer}");
-                }
-
-                // Search for Network printers
-                Console.WriteLine("\nSearching for network printers...");
-                NetworkDiscoveryHandler discoveryHandler = new NetworkDiscoveryHandler();
-                NetworkDiscoverer.FindPrinters(discoveryHandler);
-                discoveryHandler.DiscoveryCompleteEvent.WaitOne();
-                
-                List<DiscoveredPrinter> networkPrinters = discoveryHandler.DiscoveredPrinters;
-                Console.WriteLine($"Discovered {networkPrinters.Count} network printers.");
-                foreach (DiscoveredPrinter printer in networkPrinters)
-                {
-                    Console.WriteLine($"Network Printer: {printer}");
-                }
-
-                // Show total count
-                int totalPrinters = usbPrinters.Count + networkPrinters.Count;
-                Console.WriteLine($"\nTotal printers found: {totalPrinters}");
-            }
-            catch (DiscoveryException e)
-            {
-                Console.WriteLine($"Error discovering printers: {e.Message}");
+                var (usbPrinters, networkPrinters) = await discoveryService.DiscoverPrintersAsync();
+                discoveryService.DisplayPrinters(usbPrinters, networkPrinters);
             }
             catch (Exception e)
             {
