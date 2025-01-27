@@ -10,11 +10,31 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
-    <PackageReference Include="Zebra.Printer.SDK" Version="3.0.3295" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SdkApi.Card.Core">
+      <HintPath>Sdk\SdkApi.Card.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SdkApi.Card.Desktop">
+      <HintPath>Sdk\SdkApi.Card.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="SdkApi.Core">
+      <HintPath>Sdk\SdkApi.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="SdkApi.Desktop">
+      <HintPath>Sdk\SdkApi.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="SdkApi.Desktop.Usb">
+      <HintPath>Sdk\SdkApi.Desktop.Usb.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="template.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
