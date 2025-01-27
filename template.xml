@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template name="TemplateExample" card_type="2" card_thickness="30" delete="no">
+  <fonts>
+    <font id="1" name="Arial" size="10" bold="yes" italic="no" underline="no"/>
+    <font id="2" name="Arial" size="9" bold="no" italic="no" underline="no"/>
+    <font id="3" name="Arial" size="9" bold="no" italic="no" underline="no"/>
+    <font id="4" name="Arial" size="9" bold="yes" italic="no" underline="no"/>
+    <font id="5" name="Arial" size="8" bold="no" italic="no" underline="no"/>
+  </fonts>
+  <sides>
+    <side name="front" orientation="landscape" rotation="0" k_mode="text">
+      <print_types>
+        <print_type type="mono">
+          <text field="" font_id="1" x="160" y="40" width="0" height="0" angle="0" color="0x000000" alignment="center">CERTIFICATE OF AUTHENTICITY</text>
+          <text field="" font_id="2" x="100" y="85" width="800" height="60" angle="0" color="0x000000"  v_alignment="center" shrink="yes">We certify that this is an authentic jewel made by Eternate. Please
+refer to www.eternate.com for its terms and conditions</text>
+          <text field="" font_id="3" x="100" y="180" width="0" height="0" angle="0" color="0x000000">ITEM SERIAL NO:</text>
+          <text field="serialNumber" font_id="4" x="380" y="180" width="0" height="0" angle="0" color="0x000000"/>
+          <text field="" font_id="3" x="100" y="225" width="0" height="0" angle="0" color="0x000000">GEMSTONE:</text>
+          <text field="gemstone" font_id="4" x="380" y="220" width="0" height="0" angle="0" color="0x000000"/>
+          <text field="" font_id="3" x="100" y="265" width="0" height="0" angle="0" color="0x000000">MATERIAL:</text>
+          <text field="material" font_id="4" x="380" y="260" width="0" height="0" angle="0" color="0x000000"/>
+          <text field="" font_id="3" x="100" y="305" width="0" height="0" angle="0" color="0x000000">TOTAL CARAT:</text>
+          <text field="totalCarat" font_id="4" x="380" y="300" width="0" height="0" angle="0" color="0x000000"/>
+          <text field="" font_id="3" x="100" y="345" width="0" height="0" angle="0" color="0x000000">DATE:</text>
+          <text field="date" font_id="4" x="250" y="345" width="0" height="0" angle="0" color="0x000000"/>
+          <barcode field="qrCode" code="qrcode" x="55" y="450" width="100" height="100" quiet_zone_width="0"/>
+          <text field="" font_id="5" x="100" y="485" width="0" height="0" angle="0" color="0x000000" alignment="left" shrink="no">Contact our customer service team at</text>
+          <text field="" font_id="5" x="100" y="515" width="0" height="0" angle="0" color="0x000000" alignment="left" shrink="no">service team at service@eternate.com with your item serial</text>
+          <text field="" font_id="5" x="100" y="545" width="0" height="0" angle="0" color="0x000000" alignment="left" shrink="no">number to ask any questions.</text>
+        </print_type>
+      </print_types>
+    </side>
+  </sides>
+</template>
