@@ -1,32 +1,43 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
 	  <TargetFramework>net8.0-windows10.0.19041</TargetFramework>
 	  <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
+    <PackageReference Include="Neodynamic.SDK.BarcodeCore" Version="6.0.0" />
+    <PackageReference Include="SkiaSharp" Version="2.88.6" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Win32" Version="2.88.6" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="SdkApi.Card.Core">
       <HintPath>Sdk\SdkApi.Card.Core.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="SdkApi.Card.Desktop">
       <HintPath>Sdk\SdkApi.Card.Desktop.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="SdkApi.Core">
       <HintPath>Sdk\SdkApi.Core.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="SdkApi.Desktop">
       <HintPath>Sdk\SdkApi.Desktop.dll</HintPath>
+      <Private>true</Private>
     </Reference>
     <Reference Include="SdkApi.Desktop.Usb">
       <HintPath>Sdk\SdkApi.Desktop.Usb.dll</HintPath>
+      <Private>true</Private>
     </Reference>
   </ItemGroup>
 
@@ -34,7 +45,10 @@
     <None Update="appsettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="template.xml">
+    <None Update="Config\template.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Sdk\*.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
