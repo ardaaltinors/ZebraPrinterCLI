@@ -15,6 +15,8 @@ namespace ZebraPrinterCLI.Services
         private readonly PrinterConfig _config;
         private const int CARD_FEED_TIMEOUT = 30000;
         private const int MAX_POLLING_TIME = 60000; // Maximum time to poll for job status (60 seconds)
+        private const int MAX_RETRIES = 3;
+        private const int RETRY_DELAY_MS = 2000;
 
         public PrinterTemplateService(PrinterConfig config)
         {
@@ -29,42 +31,86 @@ namespace ZebraPrinterCLI.Services
 
             Connection? connection = null;
             ZebraCardPrinter? zebraCardPrinter = null;
+            Exception? lastException = null;
 
-            try
+            for (int attempt = 1; attempt <= MAX_RETRIES; attempt++)
             {
-                // Create connection to the printer
-                connection = new UsbConnection(printerConnectionString);
-                connection.Open();
-
-                // Initialize printer
-                zebraCardPrinter = ZebraCardPrinterFactory.GetInstance(connection);
-                var zebraCardTemplate = new ZebraCardTemplate(zebraCardPrinter);
-
-                // Get template fields and validate data
-                List<string> templateFields = zebraCardTemplate.GetTemplateDataFields(templateData);
-                ValidateFieldData(templateFields, fieldData);
-
-                // Generate and send template job
-                TemplateJob templateJob = zebraCardTemplate.GenerateTemplateDataJob(templateData, fieldData);
-                int jobId = zebraCardPrinter.PrintTemplate(copies, templateJob);
-
-                // Poll job status
-                var jobStatus = await PollJobStatusAsync(jobId, zebraCardPrinter);
-                Console.WriteLine($"Job {jobId} completed with status '{jobStatus.PrintStatus}'.");
-
-                return (jobId, jobStatus);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Error printing template: {ex.Message}", ex);
-            }
-            finally
-            {
-                if (connection is not null || zebraCardPrinter is not null)
+                try
                 {
+                    if (attempt > 1)
+                    {
+                        Console.WriteLine($"Retry attempt {attempt} of {MAX_RETRIES}...");
+                        await Task.Delay(RETRY_DELAY_MS);
+                    }
+
+                    // Create connection to the printer with error handling
+                    try
+                    {
+                        Console.WriteLine($"Attempting to create USB connection to: {printerConnectionString}");
+                        connection = new UsbConnection(printerConnectionString);
+                        connection.Open();
+                        Console.WriteLine("USB connection created successfully");
+                    }
+                    catch (Exception connEx)
+                    {
+                        throw new Exception($"Failed to create USB connection: {connEx.Message}", connEx);
+                    }
+
+                    // Initialize printer with error handling
+                    try
+                    {
+                        Console.WriteLine("Initializing printer...");
+                        zebraCardPrinter = ZebraCardPrinterFactory.GetInstance(connection);
+                        Console.WriteLine("Printer initialized successfully");
+                    }
+                    catch (Exception initEx)
+                    {
+                        throw new Exception($"Failed to initialize printer: {initEx.Message}", initEx);
+                    }
+                    
+                    // Verify printer is ready
+                    var printerStatus = zebraCardPrinter.GetPrinterStatus();
+                    if (printerStatus.Status != "ready" && printerStatus.Status != "idle")
+                    {
+                        throw new InvalidOperationException($"Printer is not ready. Status: {printerStatus.Status}");
+                    }
+
+                    // Create template handler
+                    var zebraCardTemplate = new ZebraCardTemplate(zebraCardPrinter);
+
+                    // Get template fields and validate data
+                    List<string> templateFields = zebraCardTemplate.GetTemplateDataFields(templateData);
+                    ValidateFieldData(templateFields, fieldData);
+
+                    // Generate and send template job
+                    TemplateJob templateJob = zebraCardTemplate.GenerateTemplateDataJob(templateData, fieldData);
+                    int jobId = zebraCardPrinter.PrintTemplate(copies, templateJob);
+
+                    // Poll job status
+                    var jobStatus = await PollJobStatusAsync(jobId, zebraCardPrinter);
+                    Console.WriteLine($"Job {jobId} completed with status '{jobStatus.PrintStatus}'.");
+
+                    return (jobId, jobStatus);
+                }
+                catch (Exception ex)
+                {
+                    lastException = ex;
+                    Console.WriteLine($"Attempt {attempt} failed: {ex.Message}");
+                    
+                    // Clean up resources before retry
                     CloseConnection(connection, zebraCardPrinter);
+                    connection = null;
+                    zebraCardPrinter = null;
+
+                    if (attempt == MAX_RETRIES)
+                    {
+                        throw new Exception($"Error printing template after {MAX_RETRIES} attempts: {ex.Message}", ex);
+                    }
                 }
             }
+
+            // This should never be reached due to the throw in the loop, but compiler doesn't know that
+            throw new Exception($"Error printing template: {lastException?.Message}", lastException);
         }
 
         private void ValidateFieldData(List<string> templateFields, Dictionary<string, string> fieldData)

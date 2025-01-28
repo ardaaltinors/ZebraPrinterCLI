@@ -25,15 +25,36 @@ namespace ZebraPrinterCLI.Services
                 if (_config.EnableUsbDiscovery)
                 {
                     Console.WriteLine("Searching for USB printers...");
-                    usbPrinters = UsbDiscoverer.GetZebraUsbPrinters();
-                    Console.WriteLine($"Discovered {usbPrinters.Count} USB printers.");
+                    try
+                    {
+                        // Run USB discovery in a background thread since it might block
+                        usbPrinters = await Task.Run(() => 
+                        {
+                            Console.WriteLine("Starting USB discovery process...");
+                            var printers = UsbDiscoverer.GetZebraUsbPrinters();
+                            foreach (var printer in printers)
+                            {
+                                Console.WriteLine($"Found USB printer: {printer}, Address: {printer.Address}");
+                            }
+                            return printers;
+                        });
+                        Console.WriteLine($"Discovered {usbPrinters.Count} USB printers.");
+                    }
+                    catch (Exception usbEx)
+                    {
+                        Console.WriteLine($"Error during USB printer discovery: {usbEx.Message}");
+                        throw;
+                    }
                 }
 
                 if (_config.EnableNetworkDiscovery)
                 {
                     Console.WriteLine("\nSearching for network printers...");
-                    NetworkDiscoverer.FindPrinters(_networkDiscoveryHandler);
-                    _networkDiscoveryHandler.DiscoveryCompleteEvent.WaitOne();
+                    await Task.Run(() =>
+                    {
+                        NetworkDiscoverer.FindPrinters(_networkDiscoveryHandler);
+                        _networkDiscoveryHandler.DiscoveryCompleteEvent.WaitOne();
+                    });
                     networkPrinters = _networkDiscoveryHandler.DiscoveredPrinters;
                     Console.WriteLine($"Discovered {networkPrinters.Count} network printers.");
                 }
