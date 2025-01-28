@@ -10,6 +10,12 @@ using ZebraPrinterCLI.Services;
 // Web API Setup and Configuration
 var builder = WebApplication.CreateBuilder(args);
 
+// Force Development environment
+builder.Environment.EnvironmentName = "Development";
+
+// Configure specific URLs
+builder.WebHost.UseUrls("https://0.0.0.0:53039", "http://0.0.0.0:53040");
+
 // Add services to the container
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -22,17 +28,18 @@ builder.Services.AddSingleton<PrinterTemplateService>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline
-if (app.Environment.IsDevelopment())
+// Always enable Swagger regardless of environment
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zebra Printer API V1");
+    c.RoutePrefix = string.Empty; // serve the Swagger UI at the root URL
+});
 
 app.UseHttpsRedirection();
 
 // Debug endpoint to list all available printers
-app.MapGet("/", async (PrinterDiscoveryService discoveryService) =>
+app.MapGet("/printers", async (PrinterDiscoveryService discoveryService) =>
 {
     try
     {
