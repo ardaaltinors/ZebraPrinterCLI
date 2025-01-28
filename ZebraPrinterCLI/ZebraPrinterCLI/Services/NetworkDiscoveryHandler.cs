@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Threading;
 using Zebra.Sdk.Printer.Discovery;
 
 namespace ZebraPrinterCLI.Services
@@ -23,7 +25,14 @@ namespace ZebraPrinterCLI.Services
             printers.Add(printer);
         }
 
-        public List<DiscoveredPrinter> DiscoveredPrinters => printers;
-        public AutoResetEvent DiscoveryCompleteEvent => discoCompleteEvent;
+        public List<DiscoveredPrinter> DiscoveredPrinters
+        {
+            get => printers;
+        }
+
+        public AutoResetEvent DiscoveryCompleteEvent
+        {
+            get => discoCompleteEvent;
+        }
     }
 } 

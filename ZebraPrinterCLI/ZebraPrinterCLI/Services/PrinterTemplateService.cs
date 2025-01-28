@@ -14,13 +14,14 @@ namespace ZebraPrinterCLI.Services
     {
         private readonly PrinterConfig _config;
         private const int CARD_FEED_TIMEOUT = 30000;
+        private const int MAX_POLLING_TIME = 60000; // Maximum time to poll for job status (60 seconds)
 
         public PrinterTemplateService(PrinterConfig config)
         {
             _config = config ?? throw new ArgumentNullException(nameof(config));
         }
 
-        public async Task<int> PrintTemplateAsync(string printerConnectionString, string templateData, Dictionary<string, string> fieldData, int copies = 1)
+        public async Task<(int JobId, JobStatusInfo Status)> PrintTemplateAsync(string printerConnectionString, string templateData, Dictionary<string, string> fieldData, int copies = 1)
         {
             ArgumentNullException.ThrowIfNull(printerConnectionString);
             ArgumentNullException.ThrowIfNull(templateData);
@@ -51,7 +52,7 @@ namespace ZebraPrinterCLI.Services
                 var jobStatus = await PollJobStatusAsync(jobId, zebraCardPrinter);
                 Console.WriteLine($"Job {jobId} completed with status '{jobStatus.PrintStatus}'.");
 
-                return jobId;
+                return (jobId, jobStatus);
             }
             catch (Exception ex)
             {
@@ -87,9 +88,16 @@ namespace ZebraPrinterCLI.Services
             JobStatusInfo jobStatusInfo = new JobStatusInfo();
             bool isFeeding = false;
             long start = Math.Abs(Environment.TickCount);
+            long pollStart = start;
 
             while (true)
             {
+                // Check if we've exceeded the maximum polling time
+                if (Math.Abs(Environment.TickCount) > pollStart + MAX_POLLING_TIME)
+                {
+                    throw new TimeoutException($"Job status polling timed out after {MAX_POLLING_TIME/1000} seconds");
+                }
+
                 jobStatusInfo = zebraCardPrinter.GetJobStatus(jobId);
 
                 if (!isFeeding)
@@ -102,8 +110,15 @@ namespace ZebraPrinterCLI.Services
                 string alarmDesc = jobStatusInfo.AlarmInfo.Value > 0 ? $" ({jobStatusInfo.AlarmInfo.Description})" : "";
                 string errorDesc = jobStatusInfo.ErrorInfo.Value > 0 ? $" ({jobStatusInfo.ErrorInfo.Description})" : "";
 
-                Console.WriteLine($"Job {jobId}: status:{jobStatusInfo.PrintStatus}, position:{jobStatusInfo.CardPosition}, " +
-                                $"alarm:{jobStatusInfo.AlarmInfo.Value}{alarmDesc}, error:{jobStatusInfo.ErrorInfo.Value}{errorDesc}");
+                string statusMessage = $"Job {jobId}: status:{jobStatusInfo.PrintStatus}, position:{jobStatusInfo.CardPosition}, " +
+                                    $"alarm:{jobStatusInfo.AlarmInfo.Value}{alarmDesc}, error:{jobStatusInfo.ErrorInfo.Value}{errorDesc}";
+                Console.WriteLine(statusMessage);
+
+                // Check for immediate error conditions
+                if (jobStatusInfo.AlarmInfo.Value > 0 || jobStatusInfo.ErrorInfo.Value > 0)
+                {
+                    return jobStatusInfo;
+                }
 
                 if (jobStatusInfo.PrintStatus.Contains("done_ok"))
                 {
@@ -118,6 +133,7 @@ namespace ZebraPrinterCLI.Services
                 {
                     Console.WriteLine($"The job encountered an error [{jobStatusInfo.ErrorInfo.Description}] and was cancelled.");
                     zebraCardPrinter.Cancel(jobId);
+                    break;
                 }
                 else if (jobStatusInfo.PrintStatus.Contains("in_progress") && isFeeding)
                 {
@@ -125,6 +141,7 @@ namespace ZebraPrinterCLI.Services
                     {
                         Console.WriteLine("The job timed out waiting for a card and was cancelled.");
                         zebraCardPrinter.Cancel(jobId);
+                        break;
                     }
                 }
 

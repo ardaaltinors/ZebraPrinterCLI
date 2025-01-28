@@ -1,111 +1,199 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using System.Text.Json;
+using System.Text.RegularExpressions;
 using Zebra.Sdk.Printer;
 using Zebra.Sdk.Printer.Discovery;
 using ZebraPrinterCLI.Config;
 using ZebraPrinterCLI.Services;
-using Microsoft.Extensions.Configuration;
 
-namespace ZebraPrinterCLI
+// Web API Setup and Configuration
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// Configure printer services
+builder.Services.Configure<PrinterConfig>(builder.Configuration.GetSection("PrinterConfig"));
+builder.Services.AddSingleton<PrinterConfig>(sp => sp.GetRequiredService<IOptions<PrinterConfig>>().Value);
+builder.Services.AddSingleton<PrinterDiscoveryService>();
+builder.Services.AddSingleton<PrinterTemplateService>();
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline
+if (app.Environment.IsDevelopment())
 {
-    internal class Program
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseHttpsRedirection();
+
+// Debug endpoint to list all available printers
+app.MapGet("/", async (PrinterDiscoveryService discoveryService) =>
+{
+    try
     {
-        static async Task Main(string[] args)
+        var (usbPrinters, networkPrinters) = await discoveryService.DiscoverPrintersAsync();
+        return Results.Ok(new
         {
-            try
+            UsbPrinters = usbPrinters,
+            NetworkPrinters = networkPrinters
+        });
+    }
+    catch (Exception ex)
+    {
+        return Results.Problem(ex.Message);
+    }
+})
+.WithName("GetPrinters")
+.WithOpenApi();
+
+// Print endpoint that automatically finds and uses available printer
+app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTemplateService templateService, [FromBody] PrintRequest request) =>
+{
+    try
+    {
+        // Find available printers
+        var (usbPrinters, networkPrinters) = await discoveryService.DiscoverPrintersAsync();
+        
+        // Get the first available printer (prioritize USB over network)
+        var printer = usbPrinters.FirstOrDefault() ?? networkPrinters.FirstOrDefault();
+        
+        if (printer == null)
+        {
+            return Results.Problem("No printers found. Please connect a printer and try again.");
+        }
+
+        string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config", "template.xml");
+        if (!File.Exists(templatePath))
+        {
+            return Results.NotFound("Template file not found");
+        }
+
+        string templateData = await File.ReadAllTextAsync(templatePath);
+        
+        try 
+        {
+            var (jobId, status) = await templateService.PrintTemplateAsync(printer.ToString(), templateData, request.FieldData);
+            
+            // Check for printer errors or alarms
+            if (status.AlarmInfo.Value > 0 || status.ErrorInfo.Value > 0)
             {
-                // Build configuration
-                IConfiguration configuration = new ConfigurationBuilder()
-                    .SetBasePath(Directory.GetCurrentDirectory())
-                    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-                    .Build();
-
-                // Get printer configuration from appsettings.json
-                var printerConfig = configuration.GetSection("PrinterConfig").Get<PrinterConfig>();
-                
-                if (printerConfig == null)
+                var errorDetails = new Dictionary<string, object>
                 {
-                    throw new InvalidOperationException("Failed to load printer configuration from appsettings.json");
+                    ["JobId"] = jobId,
+                    ["PrinterUsed"] = printer.ToString(),
+                    ["PrinterType"] = printer is DiscoveredUsbPrinter ? "USB" : "Network",
+                    ["Status"] = status.PrintStatus,
+                    ["Position"] = status.CardPosition
+                };
+
+                if (status.AlarmInfo.Value > 0)
+                {
+                    errorDetails["AlarmCode"] = status.AlarmInfo.Value;
+                    errorDetails["Message"] = status.AlarmInfo.Description;
                 }
 
-                // Initialize services
-                var discoveryService = new PrinterDiscoveryService(printerConfig);
-                var templateService = new PrinterTemplateService(printerConfig);
-
-                Console.WriteLine("Starting printer discovery...");
-                var (usbPrinters, networkPrinters) = await discoveryService.DiscoverPrintersAsync();
-                discoveryService.DisplayPrinters(usbPrinters, networkPrinters);
-
-                if (usbPrinters.Count > 0 || networkPrinters.Count > 0)
+                if (status.ErrorInfo.Value > 0)
                 {
-                    // For demo purposes, use the first available printer
-                    var printer = usbPrinters.Count > 0 ? usbPrinters[0] : networkPrinters[0];
-                    
-                    // Example template data and field values
-                    string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config", "template.xml");
-                    if (!File.Exists(templatePath))
-                    {
-                        throw new FileNotFoundException($"Template file not found at: {templatePath}");
-                    }
-                    
-                    string templateData = File.ReadAllText(templatePath);
-                    var fieldData = new Dictionary<string, string>
-                    {
-                        { "serialNumber", "SN123456789" },
-                        { "gemstone", "Diamond" },
-                        { "material", "18K White Gold" },
-                        { "totalCarat", "1.5" },
-                        { "date", DateTime.Now.ToString("yyyy-MM-dd") },
-                        //{ "qrCode", "123456789" }  // Numeric only value for testing
-                    };
+                    errorDetails["ErrorCode"] = status.ErrorInfo.Value;
+                    errorDetails["ErrorMessage"] = status.ErrorInfo.Description;
+                }
 
-                    Console.WriteLine($"\nPrinting template to printer: {printer}");
-                    int jobId = await templateService.PrintTemplateAsync(printer.ToString(), templateData, fieldData);
-                    Console.WriteLine($"Print job completed with ID: {jobId}");
-                }
-                else
-                {
-                    Console.WriteLine("No printers found. Please connect a printer and try again.");
-                }
+                return Results.UnprocessableEntity(errorDetails);
             }
-            catch (Exception e)
+
+            return Results.Ok(new
             {
-                Console.WriteLine($"Unexpected error: {e.Message}");
+                JobId = jobId,
+                PrinterUsed = printer.ToString(),
+                PrinterType = printer is DiscoveredUsbPrinter ? "USB" : "Network",
+                Status = status.PrintStatus,
+                Position = status.CardPosition
+            });
+        }
+        catch (TimeoutException tex)
+        {
+            return Results.UnprocessableEntity(new Dictionary<string, object>
+            {
+                ["Error"] = "Timeout",
+                ["Message"] = tex.Message
+            });
+        }
+        catch (Exception printEx)
+        {
+            // Create a dictionary to hold error details
+            var errorDetails = new Dictionary<string, object>();
+
+            // Check for specific printer status/alarm codes using regular expressions
+            var statusMatch = Regex.Match(printEx.Message, @"status:(\w+)");
+            var positionMatch = Regex.Match(printEx.Message, @"position:(\w+)");
+            var alarmMatch = Regex.Match(printEx.Message, @"alarm:(\d+)");
+            var errorMatch = Regex.Match(printEx.Message, @"error:(\d+)");
+
+            // Extract error information if matches are found
+            if (statusMatch.Success)
+            {
+                errorDetails["Status"] = statusMatch.Groups[1].Value;
             }
+            if (positionMatch.Success)
+            {
+                errorDetails["Position"] = positionMatch.Groups[1].Value;
+            }
+            if (alarmMatch.Success)
+            {
+                int alarmCode = int.Parse(alarmMatch.Groups[1].Value);
+                errorDetails["AlarmCode"] = alarmCode;
+                errorDetails["Message"] = PrinterErrorHelper.GetPrinterErrorMessage(alarmCode);
+            }
+            if (errorMatch.Success)
+            {
+                errorDetails["ErrorCode"] = int.Parse(errorMatch.Groups[1].Value);
+            }
+
+            // If no specific error details were extracted, provide a generic message
+            if (errorDetails.Count == 0)
+            {
+                errorDetails["Message"] = "An unexpected printer error occurred.";
+            }
+
+            // Include the original exception message for debugging purposes
+            errorDetails["ExceptionMessage"] = printEx.Message;
+
+            // Return a structured error response
+            return Results.UnprocessableEntity(errorDetails);
         }
     }
-
-    internal class NetworkDiscoveryHandler : DiscoveryHandler
+    catch (Exception ex)
     {
-        private List<DiscoveredPrinter> printers = new List<DiscoveredPrinter>();
-        private AutoResetEvent discoCompleteEvent = new AutoResetEvent(false);
+        return Results.Problem(ex.Message);
+    }
+})
+.WithName("Print")
+.WithOpenApi();
 
-        public void DiscoveryError(string message)
-        {
-            Console.WriteLine($"An error occurred during discovery: {message}.");
-            discoCompleteEvent.Set();
-        }
+await app.RunAsync();
 
-        public void DiscoveryFinished()
-        {
-            discoCompleteEvent.Set();
-        }
+// Request Models and Helper Methods
+public record PrintRequest(Dictionary<string, string> FieldData);
 
-        public void FoundPrinter(DiscoveredPrinter printer)
+static class PrinterErrorHelper
+{
+    public static string GetPrinterErrorMessage(int alarmCode)
+    {
+        return alarmCode switch
         {
-            printers.Add(printer);
-        }
-
-        public List<DiscoveredPrinter> DiscoveredPrinters
-        {
-            get => printers;
-        }
-
-        public AutoResetEvent DiscoveryCompleteEvent
-        {
-            get => discoCompleteEvent;
-        }
+            4001 => "Media: Out of cards. Please load cards into the printer.",
+            4002 => "Media: Card jam. Please check and clear the card path.",
+            4003 => "Ribbon: Out of ribbon. Please replace the ribbon.",
+            4004 => "Ribbon: Ribbon jam. Please check and clear the ribbon path.",
+            4005 => "Printer: Cover open. Please close the printer cover.",
+            4006 => "Printer: Temperature error. Please wait for the printer to cool down.",
+            4007 => "Printer: Communication error. Please check the connection.",
+            _ => $"Printer error: Alarm code {alarmCode}"
+        };
     }
 }
