@@ -26,12 +26,14 @@ POST http://localhost:53039/print
 ```json
 {
     "FieldData": {
-        "serialNumber": "1234567890",
-        "gemstone": "Diamond",
-        "material": "Gold",
-        "totalCarat": "1.00",
-        "date": "2024-01-01"
+        "serialNumber": "JWL134836",
+        "gemstone": "Lab Diamond (GH, SI+)",
+        "material": "18k White Gold",
+        "totalCarat": "2.25 ct.",
+        "date": "9/4/2024",
+        "qrcode": "altinors.com"
     }
 }
 ```
+
 
