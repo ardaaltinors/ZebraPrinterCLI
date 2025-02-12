@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Zebra.Sdk.Card.Printer.Discovery;
 using Zebra.Sdk.Printer;
 using Zebra.Sdk.Printer.Discovery;
 using ZebraPrinterCLI.Config;
@@ -52,8 +54,12 @@ namespace ZebraPrinterCLI.Services
                     Console.WriteLine("\nSearching for network printers...");
                     await Task.Run(() =>
                     {
-                        NetworkDiscoverer.FindPrinters(_networkDiscoveryHandler);
+                        NetworkCardDiscoverer.FindPrinters(_networkDiscoveryHandler);
                         _networkDiscoveryHandler.DiscoveryCompleteEvent.WaitOne();
+
+                        List<DiscoveredPrinter> discoveredPrinters = _networkDiscoveryHandler.DiscoveredPrinters;
+
+                       
                     });
                     networkPrinters = _networkDiscoveryHandler.DiscoveredPrinters;
                     Console.WriteLine($"Discovered {networkPrinters.Count} network printers.");

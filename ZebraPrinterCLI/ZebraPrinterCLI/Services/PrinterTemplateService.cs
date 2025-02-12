@@ -6,6 +6,7 @@ using Zebra.Sdk.Card.Containers;
 using Zebra.Sdk.Card.Job.Template;
 using Zebra.Sdk.Card.Printer;
 using Zebra.Sdk.Comm;
+using Zebra.Sdk.Printer.Discovery;
 using ZebraPrinterCLI.Config;
 
 namespace ZebraPrinterCLI.Services
@@ -23,7 +24,7 @@ namespace ZebraPrinterCLI.Services
             _config = config ?? throw new ArgumentNullException(nameof(config));
         }
 
-        public async Task<(int JobId, JobStatusInfo Status)> PrintTemplateAsync(string printerConnectionString, string templateData, Dictionary<string, string> fieldData, int copies = 1)
+        public async Task<(int JobId, JobStatusInfo Status)> PrintTemplateAsync(DiscoveredPrinter printerConnectionString, string templateData, Dictionary<string, string> fieldData, int copies = 1)
         {
             ArgumentNullException.ThrowIfNull(printerConnectionString);
             ArgumentNullException.ThrowIfNull(templateData);
@@ -47,8 +48,10 @@ namespace ZebraPrinterCLI.Services
                     try
                     {
                         Console.WriteLine($"Attempting to create USB connection to: {printerConnectionString}");
-                        connection = new UsbConnection(printerConnectionString);
+                        //connection = new UsbConnection(printerConnectionString);
+                        connection = printerConnectionString.GetConnection();
                         connection.Open();
+                        
                         Console.WriteLine("USB connection created successfully");
                     }
                     catch (Exception connEx)
@@ -76,14 +79,16 @@ namespace ZebraPrinterCLI.Services
                     }
 
                     // Create template handler
-                    var zebraCardTemplate = new ZebraCardTemplate(zebraCardPrinter);
-
+                    ZebraCardTemplate? zebraCardTemplate = new ZebraCardTemplate(zebraCardPrinter);
+                    string templateName = "template";
+                    zebraCardTemplate.DeleteTemplateFileData(templateName);
+                    zebraCardTemplate.SaveTemplateFileData(templateName, templateData);
                     // Get template fields and validate data
                     List<string> templateFields = zebraCardTemplate.GetTemplateDataFields(templateData);
                     ValidateFieldData(templateFields, fieldData);
 
                     // Generate and send template job
-                    TemplateJob templateJob = zebraCardTemplate.GenerateTemplateDataJob(templateData, fieldData);
+                    TemplateJob templateJob = zebraCardTemplate.GenerateTemplateJob(templateName, fieldData);
                     int jobId = zebraCardPrinter.PrintTemplate(copies, templateJob);
 
                     // Poll job status

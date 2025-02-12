@@ -84,7 +84,7 @@ app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTe
         
         try 
         {
-            var (jobId, status) = await templateService.PrintTemplateAsync(printer.ToString(), templateData, request.FieldData);
+            var (jobId, status) = await templateService.PrintTemplateAsync(printer, templateData, request.FieldData);
             
             // Check for printer errors or alarms
             if (status.AlarmInfo.Value > 0 || status.ErrorInfo.Value > 0)

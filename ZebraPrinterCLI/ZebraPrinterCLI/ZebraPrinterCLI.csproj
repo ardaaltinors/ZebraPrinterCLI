@@ -10,11 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Lextm.SharpSnmpLib" Version="12.5.2" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
-    <PackageReference Include="Neodynamic.SDK.BarcodeCore" Version="6.0.0" />
+    <PackageReference Include="Neodynamic.SDK.BarcodeCore" Version="6.0.24.513" />
     <PackageReference Include="SkiaSharp" Version="2.88.6" />
     <PackageReference Include="SkiaSharp.NativeAssets.Win32" Version="2.88.6" />
     <PackageReference Include="System.Drawing.Common" Version="8.0.1" />
@@ -22,24 +23,19 @@
 
   <ItemGroup>
     <Reference Include="SdkApi.Card.Core">
-      <HintPath>Sdk\SdkApi.Card.Core.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Card.Core.dll</HintPath>
     </Reference>
     <Reference Include="SdkApi.Card.Desktop">
-      <HintPath>Sdk\SdkApi.Card.Desktop.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Card.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="SdkApi.Core">
-      <HintPath>Sdk\SdkApi.Core.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Core.dll</HintPath>
     </Reference>
     <Reference Include="SdkApi.Desktop">
-      <HintPath>Sdk\SdkApi.Desktop.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="SdkApi.Desktop.Usb">
-      <HintPath>Sdk\SdkApi.Desktop.Usb.dll</HintPath>
-      <Private>true</Private>
+      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Desktop.Usb.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -48,9 +44,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Config\template.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="Sdk\*.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

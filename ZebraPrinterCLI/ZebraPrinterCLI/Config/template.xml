@@ -29,7 +29,7 @@
           <text field="" font_id="3" x="157" y="465" width="0" height="0" angle="0" color="0x000000">DATE:</text>
           <text field="date" font_id="4" x="510" y="460" width="0" height="0" angle="0" color="0x000000"/>
 
-          <barcode field="qrcode" x="155" y="525" rotation="0" code="code39" height="86" width="86" multiplier="1"/>
+          <barcode field="qrcode" x="155" y="525" rotation="0" code="qrcode" height="86" width="86" multiplier="1"/>
 
           <text field="" font_id="5" x="270" y="520" width="0" height="0" angle="0" color="0x000000" alignment="left" shrink="no">Contact our customer service team at</text>
           <text field="" font_id="6" x="270" y="550" width="0" height="0" angle="0" color="0x000000" alignment="left" shrink="no">service@eternate.com</text>
