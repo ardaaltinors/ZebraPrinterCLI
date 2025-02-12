@@ -8,10 +8,11 @@
     ".NETCoreApp,Version=v8.0": {
       "ZebraPrinterCLI/1.0.0": {
         "dependencies": {
+          "Lextm.SharpSnmpLib": "12.5.2",
           "Microsoft.AspNetCore.OpenApi": "8.0.0",
           "Microsoft.Extensions.Configuration.Binder": "8.0.0",
           "Microsoft.Extensions.Configuration.Json": "8.0.0",
-          "Neodynamic.SDK.BarcodeCore": "6.0.0",
+          "Neodynamic.SDK.BarcodeCore": "6.0.24.513",
           "SkiaSharp": "2.88.6",
           "SkiaSharp.NativeAssets.Win32": "2.88.6",
           "Swashbuckle.AspNetCore": "6.5.0",
@@ -36,6 +37,14 @@
           "WinRT.Runtime.dll": {
             "assemblyVersion": "2.2.0.0",
             "fileVersion": "2.2.0.48161"
+          }
+        }
+      },
+      "Lextm.SharpSnmpLib/12.5.2": {
+        "runtime": {
+          "lib/net6.0/SharpSnmpLib.dll": {
+            "assemblyVersion": "12.5.2.0",
+            "fileVersion": "12.5.2.0"
           }
         }
       },
@@ -124,7 +133,7 @@
           }
         }
       },
-      "Neodynamic.SDK.BarcodeCore/6.0.0": {
+      "Neodynamic.SDK.BarcodeCore/6.0.24.513": {
         "dependencies": {
           "SkiaSharp": "2.88.6",
           "System.Text.Encoding.CodePages": "4.4.0"
@@ -132,7 +141,7 @@
         "runtime": {
           "lib/netstandard2.0/Neodynamic.SDK.BarcodeCore.dll": {
             "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.0.0"
+            "fileVersion": "6.0.24.513"
           }
         }
       },
@@ -289,6 +298,13 @@
       "serviceable": false,
       "sha512": ""
     },
+    "Lextm.SharpSnmpLib/12.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rWPyrB7klKxbuM/2wAQBgFk71XpERJt6uSRI27tCpMePidqbRD5whfFCXMeO0MlhUwqBmTZn7PoL6YnQLdZy1Q==",
+      "path": "lextm.sharpsnmplib/12.5.2",
+      "hashPath": "lextm.sharpsnmplib.12.5.2.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.OpenApi/8.0.0": {
       "type": "package",
       "serviceable": true,
@@ -387,12 +403,12 @@
       "path": "microsoft.win32.systemevents/8.0.0",
       "hashPath": "microsoft.win32.systemevents.8.0.0.nupkg.sha512"
     },
-    "Neodynamic.SDK.BarcodeCore/6.0.0": {
+    "Neodynamic.SDK.BarcodeCore/6.0.24.513": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-u/r52PG020pl0fBBK3ZMrUBkHzv58DMonlAWk6sQObHvCPLFsn5TXSbEtdpP6JxyCGL+b2wVNz0DJhQre754hw==",
-      "path": "neodynamic.sdk.barcodecore/6.0.0",
-      "hashPath": "neodynamic.sdk.barcodecore.6.0.0.nupkg.sha512"
+      "sha512": "sha512-iNs7iD/lOnGE6qnG0v2bVn4/B4TWV3081fdW2bQjhr8Dj9ASLS+TVO8FUuvDz1ktTbtlhvKMFmsQdDgUwcNLyw==",
+      "path": "neodynamic.sdk.barcodecore/6.0.24.513",
+      "hashPath": "neodynamic.sdk.barcodecore.6.0.24.513.nupkg.sha512"
     },
     "SkiaSharp/2.88.6": {
       "type": "package",

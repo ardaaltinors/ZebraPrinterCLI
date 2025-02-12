@@ -6,6 +6,7 @@ using Zebra.Sdk.Printer;
 using Zebra.Sdk.Printer.Discovery;
 using ZebraPrinterCLI.Config;
 using ZebraPrinterCLI.Services;
+using Microsoft.OpenApi.Models;
 
 // Web API Setup and Configuration
 var builder = WebApplication.CreateBuilder(args);
@@ -18,7 +19,31 @@ builder.WebHost.UseUrls("https://0.0.0.0:53039", "http://0.0.0.0:53040");
 
 // Add services to the container
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Zebra Printer API", Version = "v1" });
+    c.MapType<PrintRequest>(() => new OpenApiSchema
+    {
+        Type = "object",
+        Properties = new Dictionary<string, OpenApiSchema>
+        {
+            ["fieldData"] = new OpenApiSchema
+            {
+                Type = "object",
+                AdditionalProperties = new OpenApiSchema { Type = "string" },
+                Example = new Microsoft.OpenApi.Any.OpenApiObject
+                {
+                    ["serialNumber"] = new Microsoft.OpenApi.Any.OpenApiString("SN123456789"),
+                    ["gemstone"] = new Microsoft.OpenApi.Any.OpenApiString("Diamond"),
+                    ["material"] = new Microsoft.OpenApi.Any.OpenApiString("18K White Gold"),
+                    ["totalCarat"] = new Microsoft.OpenApi.Any.OpenApiString("1.5"),
+                    ["date"] = new Microsoft.OpenApi.Any.OpenApiString("2024-01-27"),
+                    ["qrcode"] = new Microsoft.OpenApi.Any.OpenApiString("https://www.eternate.com")
+                }
+            }
+        }
+    });
+});
 
 // Configure printer services
 builder.Services.Configure<PrinterConfig>(builder.Configuration.GetSection("PrinterConfig"));

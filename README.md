@@ -1,12 +1,18 @@
 # Zebra ZC350 Automated Print API
 
+## Run
+- Run the executable from `publish/ZebraPrinterCLI.exe`
+
+### Updating executable
+- Run `dotnet publish ZebraPrinterCLI/ZebraPrinterCLI/ZebraPrinterCLI.csproj -c Release -o ./publish`
+
 ## Adjust settings
 
 Change USB or Network discovery settings from `appsettings.json`
 ```json
 "PrinterConfig": {
-    "EnableUsbDiscovery": true, // true or false
-    "EnableNetworkDiscovery": false, // true or false (default is false)
+    "EnableUsbDiscovery": false, // true or false
+    "EnableNetworkDiscovery": true, // true or false (default is true)
 }
 ```
 

@@ -23,19 +23,19 @@
 
   <ItemGroup>
     <Reference Include="SdkApi.Card.Core">
-      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Card.Core.dll</HintPath>
+      <HintPath>Sdk\SdkApi.Card.Core.dll</HintPath>
     </Reference>
     <Reference Include="SdkApi.Card.Desktop">
-      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Card.Desktop.dll</HintPath>
+      <HintPath>Sdk\SdkApi.Card.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="SdkApi.Core">
-      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Core.dll</HintPath>
+      <HintPath>Sdk\SdkApi.Core.dll</HintPath>
     </Reference>
     <Reference Include="SdkApi.Desktop">
-      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Desktop.dll</HintPath>
+      <HintPath>Sdk\SdkApi.Desktop.dll</HintPath>
     </Reference>
     <Reference Include="SdkApi.Desktop.Usb">
-      <HintPath>..\..\..\..\..\Downloads\SDK_PC-.NET-Card_v3.01.332\LinkOS_SDK_PC-.NET-Card_v3.01.332\demos\Source\Sdk\SdkApi.Desktop.Usb.dll</HintPath>
+      <HintPath>Sdk\SdkApi.Desktop.Usb.dll</HintPath>
     </Reference>
   </ItemGroup>
 
