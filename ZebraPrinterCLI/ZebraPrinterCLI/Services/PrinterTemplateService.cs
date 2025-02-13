@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO; // Needed for FileNotFoundException
 using System.Threading;
 using System.Threading.Tasks;
 using Zebra.Sdk.Card.Containers;
@@ -48,7 +49,6 @@ namespace ZebraPrinterCLI.Services
                     try
                     {
                         Console.WriteLine($"Attempting to create USB connection to: {printerConnectionString}");
-                        //connection = new UsbConnection(printerConnectionString);
                         connection = printerConnectionString.GetConnection();
                         connection.Open();
                         
@@ -79,10 +79,22 @@ namespace ZebraPrinterCLI.Services
                     }
 
                     // Create template handler
-                    ZebraCardTemplate? zebraCardTemplate = new ZebraCardTemplate(zebraCardPrinter);
+                    ZebraCardTemplate zebraCardTemplate = new ZebraCardTemplate(zebraCardPrinter);
                     string templateName = "template";
-                    zebraCardTemplate.DeleteTemplateFileData(templateName);
+                    
+                    // Attempt to delete the existing template file; if it doesn't exist, log and continue.
+                    try
+                    {
+                        zebraCardTemplate.DeleteTemplateFileData(templateName);
+                    }
+                    catch (FileNotFoundException)
+                    {
+                        Console.WriteLine("Template file not found; continuing with saving the new template.");
+                    }
+
+                    // Save the new template data
                     zebraCardTemplate.SaveTemplateFileData(templateName, templateData);
+
                     // Get template fields and validate data
                     List<string> templateFields = zebraCardTemplate.GetTemplateDataFields(templateData);
                     ValidateFieldData(templateFields, fieldData);
@@ -146,7 +158,7 @@ namespace ZebraPrinterCLI.Services
                 // Check if we've exceeded the maximum polling time
                 if (Math.Abs(Environment.TickCount) > pollStart + MAX_POLLING_TIME)
                 {
-                    throw new TimeoutException($"Job status polling timed out after {MAX_POLLING_TIME/1000} seconds");
+                    throw new TimeoutException($"Job status polling timed out after {MAX_POLLING_TIME / 1000} seconds");
                 }
 
                 jobStatusInfo = zebraCardPrinter.GetJobStatus(jobId);
@@ -162,7 +174,7 @@ namespace ZebraPrinterCLI.Services
                 string errorDesc = jobStatusInfo.ErrorInfo.Value > 0 ? $" ({jobStatusInfo.ErrorInfo.Description})" : "";
 
                 string statusMessage = $"Job {jobId}: status:{jobStatusInfo.PrintStatus}, position:{jobStatusInfo.CardPosition}, " +
-                                    $"alarm:{jobStatusInfo.AlarmInfo.Value}{alarmDesc}, error:{jobStatusInfo.ErrorInfo.Value}{errorDesc}";
+                                       $"alarm:{jobStatusInfo.AlarmInfo.Value}{alarmDesc}, error:{jobStatusInfo.ErrorInfo.Value}{errorDesc}";
                 Console.WriteLine(statusMessage);
 
                 // Check for immediate error conditions
@@ -223,4 +235,4 @@ namespace ZebraPrinterCLI.Services
             catch { }
         }
     }
-} 
+}
