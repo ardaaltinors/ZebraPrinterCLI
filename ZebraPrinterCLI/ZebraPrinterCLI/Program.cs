@@ -10,6 +10,17 @@ using Microsoft.OpenApi.Models;
 
 // Web API Setup and Configuration
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
+builder.Services.AddControllers();
 
 // Force Development environment
 builder.Environment.EnvironmentName = "Development";
@@ -52,6 +63,7 @@ builder.Services.AddSingleton<PrinterDiscoveryService>();
 builder.Services.AddSingleton<PrinterTemplateService>();
 
 var app = builder.Build();
+app.UseCors("AllowAll");
 
 // Always enable Swagger regardless of environment
 app.UseSwagger();
