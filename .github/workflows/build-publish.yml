@@ -14,8 +14,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          # default GITHUB_TOKEN yerine PAT kullan
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.PAT }}   # PAT kullanarak erişim sağlanıyor
           persist-credentials: true
 
       - name: Setup .NET
@@ -29,25 +28,29 @@ jobs:
       - name: Publish Application
         run: dotnet publish ZebraPrinterCLI/ZebraPrinterCLI.sln -c Release -o publish
 
+      - name: Copy Published Files for Release Asset
+        run: |
+          robocopy publish artifact /E || if %ERRORLEVEL% LEQ 1 exit 0
+        shell: cmd
+
       - name: Commit Published Files to Repository (build-artifacts branch)
         shell: pwsh
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          # Branch 'build-artifacts' oluştur veya güncelle
+          # 'build-artifacts' branch'ini oluştur veya güncelle
           git checkout -B build-artifacts
-          # Tüm dosyaları ('.git' hariç) temizle
+          # Mevcut dizindeki tüm dosyaları ('.git' hariç) temizle
           Get-ChildItem -Path . -Exclude .git | Remove-Item -Recurse -Force
           # 'publish' klasöründeki dosyaları geçerli dizine kopyala
-          robocopy publish . /MIR
-          # Değişiklikleri aşamala
+          robocopy publish . /MIR || if ($LASTEXITCODE -le 1) { }
           git add .
-          # Değişiklik varsa commit yap
-          if (-not (git diff-index --quiet HEAD --)) {
-            git commit -m "Update published files [skip ci]"
-            git push origin build-artifacts --force
+          git diff-index --quiet HEAD --
+          if ($LASTEXITCODE -ne 0) {
+              git commit -m "Update published files [skip ci]"
+              git push origin build-artifacts --force
           } else {
-            Write-Host "No changes to commit."
+              Write-Host "No changes to commit."
           }
 
       - name: Create GitHub Release
@@ -67,6 +70,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./publish/ZebraPrinterCLI.exe
+          asset_path: artifact/ZebraPrinterCLI.exe
           asset_name: ZebraPrinterCLI.exe
           asset_content_type: application/octet-stream

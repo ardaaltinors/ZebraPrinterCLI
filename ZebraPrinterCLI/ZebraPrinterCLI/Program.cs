@@ -10,6 +10,12 @@ using Microsoft.OpenApi.Models;
 
 // Web API Setup and Configuration
 var builder = WebApplication.CreateBuilder(args);
+
+// Clear existing logging providers and add Console (and Debug) logging.
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
+builder.Logging.AddDebug();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
@@ -76,11 +82,13 @@ app.UseSwaggerUI(c =>
 app.UseHttpsRedirection();
 
 // Debug endpoint to list all available printers
-app.MapGet("/printers", async (PrinterDiscoveryService discoveryService) =>
+app.MapGet("/printers", async (PrinterDiscoveryService discoveryService, ILogger<Program> logger) =>
 {
+    logger.LogInformation("Received request for printer discovery.");
     try
     {
         var (usbPrinters, networkPrinters) = await discoveryService.DiscoverPrintersAsync();
+        logger.LogInformation("Printer discovery successful. USB: {UsbCount}, Network: {NetworkCount}", usbPrinters.Count(), networkPrinters.Count());
         return Results.Ok(new
         {
             UsbPrinters = usbPrinters,
@@ -89,6 +97,7 @@ app.MapGet("/printers", async (PrinterDiscoveryService discoveryService) =>
     }
     catch (Exception ex)
     {
+        logger.LogError(ex, "Error during printer discovery.");
         return Results.Problem(ex.Message);
     }
 })
@@ -96,24 +105,28 @@ app.MapGet("/printers", async (PrinterDiscoveryService discoveryService) =>
 .WithOpenApi();
 
 // Print endpoint that automatically finds and uses available printer
-app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTemplateService templateService, [FromBody] PrintRequest request) =>
+app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTemplateService templateService, [FromBody] PrintRequest request, ILogger<Program> logger) =>
 {
+    logger.LogInformation("Received print request with {FieldDataCount} fields.", request.FieldData.Count);
     try
     {
         // Find available printers
         var (usbPrinters, networkPrinters) = await discoveryService.DiscoverPrintersAsync();
+        logger.LogInformation("Discovered {UsbCount} USB printers and {NetworkCount} network printers.", usbPrinters.Count(), networkPrinters.Count());
         
         // Get the first available printer (prioritize USB over network)
         var printer = usbPrinters.FirstOrDefault() ?? networkPrinters.FirstOrDefault();
         
         if (printer == null)
         {
+            logger.LogWarning("No printers found.");
             return Results.Problem("No printers found. Please connect a printer and try again.");
         }
 
         string templatePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Config", "template.xml");
         if (!File.Exists(templatePath))
         {
+            logger.LogError("Template file not found at path: {TemplatePath}", templatePath);
             return Results.NotFound("Template file not found");
         }
 
@@ -122,6 +135,7 @@ app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTe
         try 
         {
             var (jobId, status) = await templateService.PrintTemplateAsync(printer, templateData, request.FieldData);
+            logger.LogInformation("Print job submitted. JobId: {JobId}", jobId);
             
             // Check for printer errors or alarms
             if (status.AlarmInfo.Value > 0 || status.ErrorInfo.Value > 0)
@@ -147,6 +161,7 @@ app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTe
                     errorDetails["ErrorMessage"] = status.ErrorInfo.Description;
                 }
 
+                logger.LogError("Printer returned error or alarm status: {Details}", JsonSerializer.Serialize(errorDetails));
                 return Results.UnprocessableEntity(errorDetails);
             }
 
@@ -161,6 +176,7 @@ app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTe
         }
         catch (TimeoutException tex)
         {
+            logger.LogError(tex, "Timeout error during printing.");
             return Results.UnprocessableEntity(new Dictionary<string, object>
             {
                 ["Error"] = "Timeout",
@@ -169,6 +185,7 @@ app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTe
         }
         catch (Exception printEx)
         {
+            logger.LogError(printEx, "An error occurred during printing.");
             // Create a dictionary to hold error details
             var errorDetails = new Dictionary<string, object>();
 
@@ -207,12 +224,12 @@ app.MapPost("/print", async (PrinterDiscoveryService discoveryService, PrinterTe
             // Include the original exception message for debugging purposes
             errorDetails["ExceptionMessage"] = printEx.Message;
 
-            // Return a structured error response
             return Results.UnprocessableEntity(errorDetails);
         }
     }
     catch (Exception ex)
     {
+        logger.LogError(ex, "Unhandled exception in print endpoint.");
         return Results.Problem(ex.Message);
     }
 })
