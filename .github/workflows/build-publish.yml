@@ -31,6 +31,7 @@ jobs:
       - name: Copy Published Files for Release Asset
         run: |
           robocopy publish artifact /E
+          IF %ERRORLEVEL% LEQ 1 exit 0
         shell: cmd
 
       - name: Commit Published Files to Repository (build-artifacts branch)
