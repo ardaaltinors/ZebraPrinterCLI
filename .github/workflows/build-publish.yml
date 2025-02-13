@@ -34,25 +34,6 @@ jobs:
           IF %ERRORLEVEL% LEQ 1 exit 0
         shell: cmd
 
-      - name: Commit Published Files to Repository (build-artifacts branch)
-        shell: pwsh
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          # Branch 'build-artifacts' oluştur veya güncelle
-          git checkout -B build-artifacts
-          # Mevcut dizindeki tüm dosyaları ('.git' hariç) temizle
-          Get-ChildItem -Path . -Exclude .git | Remove-Item -Recurse -Force
-          # 'publish' klasöründeki dosyaları geçerli dizine kopyala
-          robocopy publish . /MIR
-          git add .
-          if (-not (git diff-index --quiet HEAD --)) {
-            git commit -m "Update published files [skip ci]"
-            git push origin build-artifacts --force
-          } else {
-            Write-Host "No changes to commit."
-          }
-
       - name: Create GitHub Release
         id: create_release
         uses: actions/create-release@v1
@@ -73,3 +54,22 @@ jobs:
           asset_path: artifact/ZebraPrinterCLI.exe
           asset_name: ZebraPrinterCLI.exe
           asset_content_type: application/octet-stream
+
+      - name: Commit Published Files to Repository (build-artifacts branch)
+        shell: pwsh
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          # Build-artifacts branch'ine geçiş yap veya oluştur
+          git checkout -B build-artifacts
+          # Mevcut dizindeki tüm dosyaları ('.git' hariç) temizle
+          Get-ChildItem -Path . -Exclude .git | Remove-Item -Recurse -Force
+          # 'publish' klasöründeki dosyaları geçerli dizine kopyala
+          robocopy publish . /MIR
+          git add .
+          if (-not (git diff-index --quiet HEAD --)) {
+            git commit -m "Update published files [skip ci]"
+            git push origin build-artifacts --force
+          } else {
+            Write-Host "No changes to commit."
+          }
