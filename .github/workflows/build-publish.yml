@@ -1,10 +1,7 @@
-name: Build and Publish
+name: Build, Publish, and Release
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
     branches:
       - main
   workflow_dispatch:
@@ -14,22 +11,60 @@ jobs:
     runs-on: windows-2022
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore ZebraPrinterCLI/ZebraPrinterCLI.sln
+      - name: Restore Dependencies
+        run: dotnet restore ZebraPrinterCLI/ZebraPrinterCLI.sln
 
-    - name: Publish Application
-      run: dotnet publish ZebraPrinterCLI/ZebraPrinterCLI.sln -c Release -o publish
+      - name: Publish Application
+        run: dotnet publish ZebraPrinterCLI/ZebraPrinterCLI.sln -c Release -o publish
 
-    - name: Upload Published Artifacts
-      uses: actions/upload-artifact@main
-      with:
-        name: published-artifacts
-        path: publish
+      - name: Commit Published Files to Repository (build-artifacts branch)
+        shell: pwsh
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          # Branch 'build-artifacts' oluştur veya güncelle
+          git checkout -B build-artifacts
+          # Tüm dosyaları ('.git' hariç) temizle
+          Get-ChildItem -Path . -Exclude .git | Remove-Item -Recurse -Force
+          # 'publish' klasöründeki dosyaları geçerli dizine kopyala
+          robocopy publish . /MIR
+          # Değişiklikleri aşamala
+          git add .
+          # Değişiklik varsa commit yap
+          if (-not (git diff-index --quiet HEAD --)) {
+            git commit -m "Update published files [skip ci]"
+            git push origin build-artifacts --force
+          } else {
+            Write-Host "No changes to commit."
+          }
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release v${{ github.run_number }}
+          draft: false
+          prerelease: false
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./publish/ZebraPrinterCLI.exe
+          asset_name: ZebraPrinterCLI.exe
+          asset_content_type: application/octet-stream
