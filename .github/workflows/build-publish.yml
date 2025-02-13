@@ -29,7 +29,7 @@ jobs:
       run: dotnet publish ZebraPrinterCLI/ZebraPrinterCLI.sln -c Release -o publish
 
     - name: Upload Published Artifacts
-      uses: actions/upload-artifact@4
+      uses: actions/upload-artifact@main
       with:
         name: published-artifacts
         path: publish
