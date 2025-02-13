@@ -1,35 +1,35 @@
 name: Build and Publish
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: windows-latest
+  build:
+    runs-on: windows-2022
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: '8.0.x'
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
 
-    - name: Restore dependencies
-      run: dotnet restore ZebraPrinterCLI/ZebraPrinterCLI.sln
+    - name: Restore dependencies
+      run: dotnet restore ZebraPrinterCLI/ZebraPrinterCLI.sln
 
-    - name: Publish Application
-      run: dotnet publish ZebraPrinterCLI/ZebraPrinterCLI.sln -c Release -o publish
+    - name: Publish Application
+      run: dotnet publish ZebraPrinterCLI/ZebraPrinterCLI.sln -c Release -o publish
 
-    - name: Upload Published Artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: published-artifacts
-        path: publish
+    - name: Upload Published Artifacts
+      uses: actions/upload-artifact@4
+      with:
+        name: published-artifacts
+        path: publish
