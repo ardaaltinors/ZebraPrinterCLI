@@ -14,6 +14,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
+          # default GITHUB_TOKEN yerine PAT kullan
+          token: ${{ secrets.PAT }}
           persist-credentials: true
 
       - name: Setup .NET
@@ -52,7 +54,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           tag_name: v${{ github.run_number }}
           release_name: Release v${{ github.run_number }}
@@ -62,7 +64,7 @@ jobs:
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PAT }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./publish/ZebraPrinterCLI.exe
